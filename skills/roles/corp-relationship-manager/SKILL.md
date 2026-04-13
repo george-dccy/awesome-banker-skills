@@ -11,6 +11,10 @@ metadata:
     - pack.banks.ceb.corporate-settlement.basic-settlement
     - pack.banks.ceb.transaction-banking.yangguang-e-pay
     - pack.banks.ceb.trade-finance.yangguang-electricity-certificate
+    - pack.common.banker-thinking.top-performer
+    - pack.common.economics.business-basics
+    - pack.common.sales.consultative-b2b
+    - pack.common.psychology.business-communication
   related_prompts:
     - prompt.role.corp-relationship-manager
   references_dir: references
@@ -39,6 +43,10 @@ metadata:
 - 结算、账户、收付、回单、对账 -> `pack.banks.ceb.corporate-settlement.basic-settlement`
 - e付通、订单、账单、开票、协同 -> `pack.banks.ceb.transaction-banking.yangguang-e-pay`
 - 电费证、电费、电网、福费廷、国内证 -> `pack.banks.ceb.trade-finance.yangguang-electricity-certificate`
+- 思维框架、复盘、优先级、执行节奏 -> `pack.common.banker-thinking.top-performer`
+- 利率、通胀、周期、现金流 -> `pack.common.economics.business-basics`
+- 销售、异议、需求洞察、推进 -> `pack.common.sales.consultative-b2b`
+- 心理、信任、认知偏差、沟通摩擦 -> `pack.common.psychology.business-communication`
 
 如果命中多个包，先输出跨包判断，再分包给建议。
 

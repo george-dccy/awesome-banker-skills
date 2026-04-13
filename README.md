@@ -1,18 +1,25 @@
 # Awesome Banker Skills
 
-让银行人的优秀经验可安装、可传承、可复用。  
-Installable skills and structured knowledge packs for bankers and banking clients.
+让银行人的优秀经验可安装、可传承、可复用。
 
-`awesome-banker-skills` 是一个面向银行岗位与流程的 Skill 集合，支持两类核心资产：
+让银行人不那么累，让业务推动更丝滑。
+
+`awesome-banker-skills` 是一个面向银行岗位与流程的 Skill 集合，支持：
 
 - `skills`：岗位方法论与流程打法
-- `knowledge-packs`：机构公开知识
+- `knowledge-packs`：公开知识，包含银行公开信息和产品，以及提升岗位能力的方法
 
 ## 核心定位
 
-- 银行人的工作技能库
-- 银行岗位与流程 Skill 平台
-- 让优秀经验可安装、可传承、可复用
+把银行中优秀的工作方法和通用知识沉淀下来，帮助更多银行人：
+
+- 少踩坑
+- 少重复劳动
+- 少加班
+- 反内卷
+- 把优秀经验传承下去
+- 让大家有更多时间陪伴家人、享受生活
+- 有钱有闲、提升消费，从而让我们的社会变得更好
 
 ## 当前架构
 
@@ -28,6 +35,11 @@ Installable skills and structured knowledge packs for bankers and banking client
 │     ├─ corporate-settlement/basic-settlement/
 │     ├─ transaction-banking/yangguang-e-pay/
 │     └─ trade-finance/yangguang-electricity-certificate/
+│  └─ common/
+│     ├─ banker-thinking/top-performer/
+│     ├─ economics/business-basics/
+│     ├─ sales/consultative-b2b/
+│     └─ psychology/business-communication/
 ├─ prompts/
 ├─ registry/
 └─ workspace/
@@ -84,9 +96,10 @@ https://github.com/george-dccy/awesome-banker-skills
 2. 根据我的问题自动路由，选出最相关的 1-2 个 skill（必要时可多选）；
 3. 读取所选 skill 目录中的 SKILL.md + references/*；
 4. 按 skill 的 knowledge routing 与 related_packs，读取对应 knowledge pack 的 README.md、modules/*、faq.md、sources.md；
-5. 回答时必须把“岗位方法论”与“公开知识事实”分层表达，不要混在一起；
-6. 不编造内部制度，不输出审批/授信/定价/受理承诺，不索取真实敏感信息；
-7. 如果仓库覆盖不足，明确写“当前仓库未覆盖”，并告诉我还缺什么信息。
+5. 对于需要借助其他能力的问题，允许同时调用 common 能力包（banker-thinking/economics/sales/psychology）；
+6. 回答时必须把“岗位方法论”与“公开知识事实”分层表达，不要混在一起；
+7. 不编造内部制度，不输出审批/授信/定价/受理承诺，不索取真实敏感信息；
+8. 如果仓库覆盖不足，明确写“当前仓库未覆盖”，并告诉我还缺什么信息。
 
 回答输出格式：
 A. 路由决策（你用了哪些 skill / pack，为什么）
@@ -149,6 +162,17 @@ Agent 在执行时的核心调用链：
 4. 在 `registry/` 注册并提交 PR
 
 详细见 [CONTRIBUTING.md](./CONTRIBUTING.md) 与 [docs/distillation/WORKFLOW.md](./docs/distillation/WORKFLOW.md)。
+
+## 能力升级
+
+为了提升银行人的综合工作技能，项目还包含通用能力知识包，并与现有 skills 逻辑关联：
+
+- 顶级银行人思维：`pack.common.banker-thinking.top-performer`
+- 经济学与商业常识：`pack.common.economics.business-basics`
+- 顾问式销售技巧：`pack.common.sales.consultative-b2b`
+- 商业沟通心理学：`pack.common.psychology.business-communication`
+
+这些内容作为“方法增强层”，在 skills 路由中按需调用，以提升银行人水平。
 
 ## 边界与合规
 

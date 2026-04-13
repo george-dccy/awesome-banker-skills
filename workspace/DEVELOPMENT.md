@@ -124,9 +124,79 @@ workspace/<DEVELOPMENT|PROGRESS|AGENT_PROMPT>.md
 - `references/knowledge-routing.md`
 - `registry/skills.json` 的 `related_packs`
 
+## 技能联动机制（必须执行）
+
+每新增一个 role 或 workflow skill，至少完成以下联动：
+
+1. 关联 1 个机构业务知识包（`knowledge-packs/banks/*`）
+2. 关联 1 到 2 个通用能力包（`knowledge-packs/common/*`）
+3. 在 `references/knowledge-routing.md` 写清楚关键词路由规则
+4. 在 `scripts/build-context.py` 落地同样的路由逻辑
+5. 在 `scripts/validate-output.py` 体现结构化输出要求
+
+推荐联动顺序：
+
+- 先机构业务包（事实底座）
+- 再通用能力包（方法增强）
+- 最后 workflow 输出结构（可执行建议）
+
+### 新增 skill 标准流程（7 步）
+
+1. 明确 skill 类型（`role` 或 `workflow`）与边界
+2. 选择 1 个机构业务包（必须）+ 1 到 2 个通用能力包（必须）
+3. 在 `SKILL.md` 的 `metadata.related_packs` 填入关联 id
+4. 在 `references/knowledge-routing.md` 写清触发关键词、优先级和回退逻辑
+5. 在 `scripts/build-context.py` 实现同样路由与上下文拼装
+6. 在 `scripts/validate-output.py` 校验输出结构与合规边界
+7. 同步更新 `registry/skills.json`、`README.md`、`workspace/PROGRESS.md`
+
+### 新增 skill Definition of Done（DoD）
+
+- `SKILL.md`、`references/`、`scripts/*.py` 完整存在
+- 至少关联 2 类知识：机构业务包 + 通用能力包
+- registry 记录可追溯到真实路径，且 id 关联一致
+- 有最小可复用示例（输入示例 + 输出结构示例）
+- 明确“不替代审批/授信/定价结论”的边界说明
+- `workspace/PROGRESS.md` 的 `Now/Done` 已同步
+
+## 通用能力包使用规范
+
+当前通用能力包包含：
+
+- `pack.common.banker-thinking.top-performer`
+- `pack.common.economics.business-basics`
+- `pack.common.sales.consultative-b2b`
+- `pack.common.psychology.business-communication`
+
+使用原则：
+
+- 不把通用能力写成空泛鸡汤
+- 必须落到具体业务动作与沟通场景
+- 先给业务判断，再补能力解释，不反客为主
+
+## 内容深度标准（持续补充）
+
+后续补充知识内容时，每个包至少持续增强这三类内容：
+
+1. 场景深度：覆盖更细分的银行业务场景与边界
+2. 方法深度：给出可执行的判断框架、问题清单、动作模板
+3. 反例深度：补充常见误区、失败模式与修正建议
+
+写作标准：
+
+- 专业但易懂，适合银行一线使用
+- 有结构、有步骤、有边界
+- 不造概念，不堆术语
+
 ## 开发质量要求
 
 - 先读 `README.md` 与 `workspace/*`
 - 新增内容时保持“方法论”和“公开知识”分离
 - 每次改动同步更新 `registry/`、`README.md`、`workspace/PROGRESS.md`
 - 如果引用公开知识，必须把来源放进对应 pack 的 `sources.md`
+
+## 持续专业化迭代节奏
+
+- 每次新增或改造 skill，至少补充 1 条“银行真实场景”案例
+- 每周优先补强一个薄弱模块：业务理解、沟通推进、风险边界三选一
+- 每月做一次“通用能力包 -> 技能输出质量”回看，淘汰空泛表述

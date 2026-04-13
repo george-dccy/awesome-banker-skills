@@ -11,6 +11,9 @@ metadata:
     - pack.banks.ceb.corporate-settlement.basic-settlement
     - pack.banks.ceb.transaction-banking.yangguang-e-pay
     - pack.banks.ceb.trade-finance.yangguang-electricity-certificate
+    - pack.common.banker-thinking.top-performer
+    - pack.common.economics.business-basics
+    - pack.common.psychology.business-communication
   related_prompts:
     - prompt.workflow.report-to-leader
   references_dir: references

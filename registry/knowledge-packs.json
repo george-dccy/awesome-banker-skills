@@ -46,5 +46,67 @@
       "workflow.market-corporate-client",
       "workflow.accompany-corporate-client"
     ]
+  },
+  {
+    "id": "pack.common.banker-thinking.top-performer",
+    "institution": "common",
+    "category": "banker-thinking",
+    "title": "Top Banker Thinking",
+    "display_name_zh": "顶级银行人思维模型包",
+    "visibility": "public",
+    "path": "knowledge-packs/common/banker-thinking/top-performer",
+    "summary": "高水平银行人思维与执行节奏方法。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.report-to-leader",
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ]
+  },
+  {
+    "id": "pack.common.economics.business-basics",
+    "institution": "common",
+    "category": "economics",
+    "title": "Business Economics Basics",
+    "display_name_zh": "经济学与商业常识包",
+    "visibility": "public",
+    "path": "knowledge-packs/common/economics/business-basics",
+    "summary": "利率、通胀、周期与现金流等业务相关经济常识。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.report-to-leader",
+      "workflow.market-corporate-client"
+    ]
+  },
+  {
+    "id": "pack.common.sales.consultative-b2b",
+    "institution": "common",
+    "category": "sales",
+    "title": "Consultative B2B Sales",
+    "display_name_zh": "顾问式B2B销售技巧包",
+    "visibility": "public",
+    "path": "knowledge-packs/common/sales/consultative-b2b",
+    "summary": "需求洞察、异议处理与推进节奏技巧。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ]
+  },
+  {
+    "id": "pack.common.psychology.business-communication",
+    "institution": "common",
+    "category": "psychology",
+    "title": "Business Communication Psychology",
+    "display_name_zh": "商业沟通心理学常识包",
+    "visibility": "public",
+    "path": "knowledge-packs/common/psychology/business-communication",
+    "summary": "信任建立、认知偏差与沟通心理常识。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.report-to-leader",
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ]
   }
 ]

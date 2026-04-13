@@ -10,6 +10,10 @@ PACK_RULES = [
     (r"结算|账户|收款|付款|回单|对账|权限", "pack.banks.ceb.corporate-settlement.basic-settlement"),
     (r"e付通|订单|账单|开票|协同|供应链", "pack.banks.ceb.transaction-banking.yangguang-e-pay"),
     (r"电费证|电费|电网|国内证|福费廷", "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"),
+    (r"思维|复盘|优先级|执行节奏|长期主义", "pack.common.banker-thinking.top-performer"),
+    (r"利率|通胀|周期|宏观|现金流", "pack.common.economics.business-basics"),
+    (r"销售|异议|洞察|推进|开场", "pack.common.sales.consultative-b2b"),
+    (r"心理|信任|偏差|沟通摩擦|冲突", "pack.common.psychology.business-communication"),
 ]
 
 
