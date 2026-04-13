@@ -159,6 +159,15 @@ workspace/<DEVELOPMENT|PROGRESS|AGENT_PROMPT>.md
 - 明确“不替代审批/授信/定价结论”的边界说明
 - `workspace/PROGRESS.md` 的 `Now/Done` 已同步
 
+### 知识包 FAQ 约定（必须执行）
+
+每个 knowledge pack 必须同时包含：
+
+- `faq.md`：高频问答索引 + 合规边界口径
+- `modules/customer-faq.md`：可持续扩展的问题库（来源于一线高频问题）
+
+新增或改造知识包时，至少补充 3 条可直接被客户提问触发的问题与回答。
+
 ## 通用能力包使用规范
 
 当前通用能力包包含：

@@ -8,7 +8,9 @@
   "summary": "覆盖阳光电费证场景定位、前期判断和准备事项。",
   "modules": [
     "modules/scenario-positioning.md",
-    "modules/preparation-checklist.md"
+    "modules/preparation-checklist.md",
+    "modules/customer-faq.md"
   ],
+  "faq": "faq.md",
   "source_index": "sources.md"
 }

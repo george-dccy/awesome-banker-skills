@@ -10,8 +10,16 @@
 
 - `modules/product-positioning.md`
 - `modules/sales-discovery-questions.md`
+- `modules/customer-faq.md`
 - `faq.md`
 - `sources.md`
+
+## 使用建议（给 Agent）
+
+1. 先读 `product-positioning`，明确“是什么、解决什么问题、不解决什么”
+2. 再读 `sales-discovery-questions`，把客户问题转为诊断问题
+3. 客户问答阶段优先读 `customer-faq` 与 `faq.md`
+4. 对外回答必须带边界，不做审批、费率、时效承诺
 
 ## 边界
 

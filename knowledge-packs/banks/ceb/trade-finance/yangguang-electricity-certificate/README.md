@@ -10,8 +10,16 @@
 
 - `modules/scenario-positioning.md`
 - `modules/preparation-checklist.md`
+- `modules/customer-faq.md`
 - `faq.md`
 - `sources.md`
+
+## 使用建议（给 Agent）
+
+1. 先读 `scenario-positioning`，确认场景是否具备稳定电费支付基础
+2. 再读 `preparation-checklist`，明确首次沟通应准备的信息
+3. 客户答疑阶段优先读 `customer-faq` 与 `faq.md`
+4. 对外回答只做公开解释，不做审批、额度、费率、时效承诺
 
 ## 边界
 

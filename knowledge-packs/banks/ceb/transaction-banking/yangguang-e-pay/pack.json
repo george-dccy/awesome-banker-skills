@@ -8,7 +8,9 @@
   "summary": "覆盖阳光 e 付通的公开定位、适用场景与前期准备项。",
   "modules": [
     "modules/product-positioning.md",
-    "modules/sales-discovery-questions.md"
+    "modules/sales-discovery-questions.md",
+    "modules/customer-faq.md"
   ],
+  "faq": "faq.md",
   "source_index": "sources.md"
 }

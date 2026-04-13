@@ -10,6 +10,8 @@
 - 建立“新增 skill 必联动业务包 + 通用能力包”的检查清单
 - 按 `DEVELOPMENT.md` 的“新增 skill 标准流程（7步）”执行后续开发
 - 建立新增 skill 的 DoD 检查记录（联动关系、合规边界、示例完整性）
+- 打磨 `market-corporate-client`，形成可用于业务会议演示的首访输出模板
+- 在 e付通、电费证知识包中固化 `faq.md + modules/customer-faq.md` 双层 FAQ 机制
 
 ## Next
 
@@ -44,3 +46,6 @@
 - [2026-04-13] 增加通用能力知识包：银行人思维、经济学、销售、心理学
 - [2026-04-13] 将通用能力包路由联动到现有 4 个核心 skills
 - [2026-04-13] 在 DEVELOPMENT 补充“新增 skill 7步流程 + DoD + 持续专业化迭代节奏”
+- [2026-04-13] 强化 corp-relationship-manager 与 market-corporate-client 的会前/会中/会后可执行框架
+- [2026-04-13] 完成 e付通与阳光电费证知识包 FAQ 升级（含 `modules/customer-faq.md`）
+- [2026-04-13] README 增加业务会议演示问答样例（客户咨询 + 内部会前准备）
