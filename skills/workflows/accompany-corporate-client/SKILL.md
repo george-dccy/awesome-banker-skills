@@ -1,53 +1,45 @@
 ---
 name: accompany-corporate-client
-description: 面向对公客户陪伴与持续跟进场景，帮助维护沟通节奏、梳理问题清单和建立长期信任。适用于会后跟进、方案推进、问题协调和客户关系维护。
+description: 对公客户陪伴流程技能。用于会后跟进、问题闭环、跨团队协调和关系持续经营。
 license: MIT
+compatibility:
+  agents: [openclaw, claude-code, codex]
 metadata:
   banker_kind: workflow
   display_name_zh: 对公客户陪伴
-  related_packs: pack.banks.ceb.public-basics
-  related_prompts: prompt.workflow.accompany-corporate-client
+  related_packs:
+    - pack.banks.ceb.corporate-settlement.basic-settlement
+    - pack.banks.ceb.transaction-banking.yangguang-e-pay
+    - pack.banks.ceb.trade-finance.yangguang-electricity-certificate
+  related_prompts:
+    - prompt.workflow.accompany-corporate-client
+  references_dir: references
+  scripts_dir: scripts
 ---
 
 # 对公客户陪伴 Skill
 
-## 能力定位
+## Scope
 
-这个 workflow 不解决“第一次怎么开口”，而是解决“接触之后怎么持续推进、怎么不失联、怎么不让客户觉得只有卖产品时才出现”。
+该 workflow 关注“持续推进”，强调节奏管理、问题闭环和信任维护。
 
-## 适用时机
+## Required Reads
 
-- 客户初次接触后
-- 方案推进过程中
-- 客户提出问题后
-- 项目卡住需要继续跟时
+1. `references/follow-up-cadence.md`
+2. `references/issue-closure-model.md`
+3. `references/knowledge-routing.md`
 
-## 推荐输入
+## Output Contract
 
-- 上一次接触发生了什么
-- 客户当前最关心的问题
-- 已答复与未答复事项
-- 当前推进卡点
-- 你希望下一次接触实现什么
+必须包含：
 
-## 输出框架
+1. 客户关系温度
+2. 待回应问题清单
+3. 本次跟进动作
+4. 内部协同清单
+5. 下一次触达计划
 
-1. `当前关系温度判断`
-2. `客户最需要被回应的点`
-3. `本次该怎么跟`
-4. `需要协调谁`
-5. `下次触达时间与目标`
+## Script Hooks
 
-## 工作原则
-
-- 陪伴不是频繁打扰，而是持续创造确定性
-- 没有新结论时，也要同步进度和节奏
-- 不轻易承诺无法控制的时效和结果
-- 对外话术保持克制，对内推进保持主动
-
-## 常见失误
-
-- 只有卖产品时才联系客户
-- 遇到卡点后长期不回
-- 只同步结果，不同步过程
-- 用安抚替代推进
+- `scripts/build-context.py`
+- `scripts/validate-output.py`

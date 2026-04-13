@@ -24,6 +24,7 @@
 - `workflows` 只写动作流程，不写岗位人格故事
 - `knowledge-packs` 只写公开知识，不写经验判断与内部口径
 - `prompts` 只是轻量入口，不新增独立知识
+- `skills` 目录必须包含 `SKILL.md + references/ + scripts/*.py`
 
 ### 2. 命名稳定
 
@@ -50,6 +51,8 @@
 - 更新对应 `registry/*.json`
 - 更新 `README.md` 的资产目录或使用方式
 - 更新 `workspace/PROGRESS.md`
+- 如果是 skill，必须同步 `references/knowledge-routing.md` 与 `metadata.related_packs`
+- 如果是 prompt，优先补一个 `prompts/entrypoints/*` 总入口版本，支持自动路由
 
 ## 当前阶段约束
 
@@ -59,7 +62,9 @@
 - 客户营销
 - 客户陪伴
 - 向领导汇报
-- 光大银行公开基础知识包
+- 光大银行对公基础结算包
+- 光大银行交易银行e付通包
+- 光大银行阳光电费证包
 
 `branch-manager` 在 backlog 中，除非明确进入 Phase 2，否则不要直接创建。
 
@@ -69,3 +74,4 @@
 - 用克制、靠谱、专业、可执行的语气
 - 少喊口号，多给结构和判断框架
 - 如果仓库没有依据，就明确写“当前仓库未覆盖”
+- 用户提交蒸馏内容时，先走 `templates/distill-skill/intake.md` 再落地 skill

@@ -1,14 +1,48 @@
 [
   {
-    "id": "pack.banks.ceb.public-basics",
+    "id": "pack.banks.ceb.corporate-settlement.basic-settlement",
     "institution": "ceb",
-    "title": "CEB Public Basics",
-    "display_name_zh": "光大银行公开基础知识包",
+    "category": "corporate-settlement",
+    "title": "CEB Corporate Settlement Basic",
+    "display_name_zh": "光大银行-对公基础结算包",
     "visibility": "public",
-    "path": "knowledge-packs/banks/ceb/public-basics",
-    "summary": "首期覆盖对公基础结算、阳光 e 付通、阳光电费证等公开基础知识。",
+    "path": "knowledge-packs/banks/ceb/corporate-settlement/basic-settlement",
+    "summary": "对公账户与基础结算场景公开知识。",
     "relations": [
       "role.corp-relationship-manager",
+      "workflow.report-to-leader",
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ]
+  },
+  {
+    "id": "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+    "institution": "ceb",
+    "category": "transaction-banking",
+    "title": "CEB Yangguang E-Pay",
+    "display_name_zh": "光大银行-交易银行e付通包",
+    "visibility": "public",
+    "path": "knowledge-packs/banks/ceb/transaction-banking/yangguang-e-pay",
+    "summary": "阳光 e 付通相关公开知识。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.report-to-leader",
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ]
+  },
+  {
+    "id": "pack.banks.ceb.trade-finance.yangguang-electricity-certificate",
+    "institution": "ceb",
+    "category": "trade-finance",
+    "title": "CEB Yangguang Electricity Certificate",
+    "display_name_zh": "光大银行-阳光电费证包",
+    "visibility": "public",
+    "path": "knowledge-packs/banks/ceb/trade-finance/yangguang-electricity-certificate",
+    "summary": "阳光电费证及相关场景公开知识。",
+    "relations": [
+      "role.corp-relationship-manager",
+      "workflow.report-to-leader",
       "workflow.market-corporate-client",
       "workflow.accompany-corporate-client"
     ]

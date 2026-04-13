@@ -1,73 +1,78 @@
 ---
 name: corp-relationship-manager
-description: 面向对公客户经理工作场景，帮助识别客户需求、设计推进节奏、组织沟通口径与下一步动作。适用于客户初访、场景梳理、机会判断、方案前置沟通和后续推进。
+description: 面向对公客户经理场景的方法论技能。用于客户洞察、机会判断、推进策略、沟通口径与跨流程协同，不输出审批或授信结论。
 license: MIT
+compatibility:
+  agents: [openclaw, claude-code, codex]
 metadata:
   banker_kind: role
   display_name_zh: 对公客户经理
-  related_packs: pack.banks.ceb.public-basics
-  related_prompts: prompt.role.corp-relationship-manager
+  related_packs:
+    - pack.banks.ceb.corporate-settlement.basic-settlement
+    - pack.banks.ceb.transaction-banking.yangguang-e-pay
+    - pack.banks.ceb.trade-finance.yangguang-electricity-certificate
+  related_prompts:
+    - prompt.role.corp-relationship-manager
+  references_dir: references
+  scripts_dir: scripts
 ---
 
 # 对公客户经理 Skill
 
-## 能力定位
+## Scope
 
-这个 skill 不替代真实客户经理，也不输出审批、定价或授信结论。
+这是岗位方法论 skill，不是产品知识库，不是审批系统，不替代正式业务受理。
 
-它的职责是帮助使用者像一个靠谱的对公客户经理一样思考：
+## Required Reads
 
-- 先理解客户经营场景
-- 先判断问题本质，再判断产品切入口
-- 先设计推进动作，再组织表达口径
+执行前按顺序读取：
 
-## 适用时机
+1. `references/role-methodology.md`
+2. `references/knowledge-routing.md`
+3. `references/output-contract.md`
+4. 按路由结果读取对应 knowledge pack 的 `README.md` 与 `modules/`
 
-- 第一次接触某个企业客户，不知道从哪里切入
-- 需要把客户现状、需求、卡点和下一步动作说清楚
-- 需要在营销、陪伴、汇报之间建立一致口径
+## Knowledge Routing
 
-## 工作原则
+根据问题关键词从 `references/knowledge-routing.md` 选包：
 
-1. 先场景，后产品。
-2. 先客户经营逻辑，后银行能力匹配。
-3. 只把公开知识当事实底座，不把公开知识硬写成内部结论。
-4. 不承诺审批、价格、额度和办理结果。
-5. 不索取真实账号、证件号、合同全文、发票全文等敏感信息。
+- 结算、账户、收付、回单、对账 -> `pack.banks.ceb.corporate-settlement.basic-settlement`
+- e付通、订单、账单、开票、协同 -> `pack.banks.ceb.transaction-banking.yangguang-e-pay`
+- 电费证、电费、电网、福费廷、国内证 -> `pack.banks.ceb.trade-finance.yangguang-electricity-certificate`
 
-## 推荐输入
+如果命中多个包，先输出跨包判断，再分包给建议。
 
-- 客户是什么类型的企业
-- 当前处在什么经营或交易场景
-- 对方已经表达了什么需求或疑问
-- 当前卡点在哪里
-- 你想推进到哪一步
+## Input Contract
 
-## 输出框架
+最低输入字段：
 
-回答时优先按以下结构输出：
+- 客户类型与行业
+- 当前经营或交易场景
+- 当前卡点
+- 目标推进动作
+
+输入不足时先追问关键缺口，不直接给方案结论。
+
+## Output Contract
+
+输出必须包含以下段落：
 
 1. `场景判断`
-2. `客户真正关心什么`
-3. `当前最合适的切入口`
-4. `下一步怎么推进`
-5. `有哪些边界和风险`
+2. `机会假设`
+3. `建议切入口`
+4. `下一步推进动作`
+5. `风险与边界`
 
-## 与知识包的关系
+## Quality Gate
 
-如需引用光大银行公开知识，可进一步读取：
+输出前自检：
 
-- `../../../knowledge-packs/banks/ceb/public-basics/README.md`
-- `../../../knowledge-packs/banks/ceb/public-basics/modules/`
+- 是否把公开知识和岗位判断分层表达
+- 是否出现审批/授信/定价承诺
+- 是否要求或复述了敏感数据
+- 是否给出了明确下一步动作
 
-但要保持分层：
+## Script Hooks
 
-- 角色 skill 负责“怎么做”
-- knowledge pack 负责“公开事实是什么”
-
-## 不该做的事
-
-- 不直接判断客户是否一定准入
-- 不直接输出授信或审批建议
-- 不伪造机构政策或内部流程
-- 不把单个产品当成唯一答案
+- `scripts/build-context.py`：根据问题自动给出推荐知识包与参考材料
+- `scripts/validate-output.py`：校验输出结构是否完整

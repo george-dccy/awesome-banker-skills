@@ -83,13 +83,15 @@ workspace/<DEVELOPMENT|PROGRESS|AGENT_PROMPT>.md
 
 ## 第一阶段边界
 
-第一阶段只做以下 5 类资产：
+第一阶段只做以下资产：
 
 - `corp-relationship-manager`
 - `report-to-leader`
 - `market-corporate-client`
 - `accompany-corporate-client`
-- `banks/ceb/public-basics`
+- `banks/ceb/corporate-settlement/basic-settlement`
+- `banks/ceb/transaction-banking/yangguang-e-pay`
+- `banks/ceb/trade-finance/yangguang-electricity-certificate`
 
 第一阶段不做：
 
@@ -103,10 +105,24 @@ workspace/<DEVELOPMENT|PROGRESS|AGENT_PROMPT>.md
 
 - `branch-manager`
 - 更多银行或金融机构的公开知识包
-- contribution guide 与模板
+- 蒸馏贡献流程自动化与模板增强
 - registry 校验脚本
 - 轻量安装辅助脚本
 - README 英文版
+
+## 专业目录约定
+
+每个 skill 目录必须包含：
+
+- `SKILL.md`
+- `references/`
+- `scripts/*.py`
+
+知识关联必须同时体现在：
+
+- `SKILL.md` 的 `metadata.related_packs`
+- `references/knowledge-routing.md`
+- `registry/skills.json` 的 `related_packs`
 
 ## 开发质量要求
 

@@ -1,63 +1,49 @@
 ---
 name: report-to-leader
-description: 面向银行业务推进中的领导汇报场景，帮助把背景、进展、问题和诉求说清楚。适用于口头汇报、会前准备、周报提炼和临时请示。
+description: 向领导汇报的标准化流程技能。把业务事实、进展、问题和决策诉求整理为可拍板的输出。
 license: MIT
+compatibility:
+  agents: [openclaw, claude-code, codex]
 metadata:
   banker_kind: workflow
   display_name_zh: 向领导汇报
-  related_packs: none
-  related_prompts: prompt.workflow.report-to-leader
+  related_packs:
+    - pack.banks.ceb.corporate-settlement.basic-settlement
+    - pack.banks.ceb.transaction-banking.yangguang-e-pay
+    - pack.banks.ceb.trade-finance.yangguang-electricity-certificate
+  related_prompts:
+    - prompt.workflow.report-to-leader
+  references_dir: references
+  scripts_dir: scripts
 ---
 
 # 向领导汇报 Skill
 
-## 能力定位
+## Scope
 
-这个 workflow 用来把“我做了什么”升级成“领导能快速判断并给出指令”的汇报结构。
+把“信息汇报”升级成“决策支持”，输出必须支持领导快速判断是否继续推进。
 
-核心不是堆信息，而是帮助汇报者说清楚：
+## Required Reads
 
-- 事情是什么
-- 当前到了哪一步
-- 卡点是什么
-- 希望领导做什么决定
+1. `references/report-structure.md`
+2. `references/decision-signals.md`
+3. `references/knowledge-routing.md`
 
-## 适用时机
+## Knowledge Link
 
-- 日常进度同步
-- 重大客户事项请示
-- 会前准备
-- 临时被问进展时的快速整理
+当汇报涉及产品事实时，从 `references/knowledge-routing.md` 路由到对应 knowledge pack。
 
-## 推荐输入
+## Output Contract
 
-- 事项背景
-- 当前进展
-- 关键数据或事实
-- 主要卡点
-- 你希望领导支持的事项
+必须包含：
 
-## 输出要求
+1. 一句话结论
+2. 本周/本阶段关键事实
+3. 当前卡点
+4. 建议动作
+5. 需要领导拍板项
 
-默认按以下结构输出：
+## Script Hooks
 
-1. `一句话结论`
-2. `背景与目标`
-3. `当前进展`
-4. `关键问题`
-5. `建议动作`
-6. `需要领导拍板的点`
-
-## 风格要求
-
-- 先说结论，再说细节
-- 只保留与决策有关的信息
-- 不绕弯，不堆术语，不写流水账
-- 如果问题仍不清楚，要直接指出信息缺口
-
-## 常见失误
-
-- 只汇报动作，不汇报结果
-- 只说问题，不说建议
-- 只说难点，不说需要什么支持
-- 把未经确认的信息说成结论
+- `scripts/build-context.py`：按主题推荐需要引用的知识包
+- `scripts/validate-output.py`：校验汇报结构与决策字段

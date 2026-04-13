@@ -6,12 +6,14 @@
     "display_name_zh": "对公客户经理",
     "path": "skills/roles/corp-relationship-manager",
     "entry": "skills/roles/corp-relationship-manager/SKILL.md",
-    "summary": "沉淀对公客户经理的客户理解、推进节奏、沟通框架与边界意识。",
+    "summary": "沉淀对公客户经理的客户洞察、推进策略与沟通框架。",
     "related_prompts": [
       "prompt.role.corp-relationship-manager"
     ],
     "related_packs": [
-      "pack.banks.ceb.public-basics"
+      "pack.banks.ceb.corporate-settlement.basic-settlement",
+      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
     ]
   },
   {
@@ -21,11 +23,15 @@
     "display_name_zh": "向领导汇报",
     "path": "skills/workflows/report-to-leader",
     "entry": "skills/workflows/report-to-leader/SKILL.md",
-    "summary": "帮助把业务背景、进展、问题和诉求整理成清晰、可决策的汇报材料。",
+    "summary": "把业务进展整理成可拍板的领导汇报结构。",
     "related_prompts": [
       "prompt.workflow.report-to-leader"
     ],
-    "related_packs": []
+    "related_packs": [
+      "pack.banks.ceb.corporate-settlement.basic-settlement",
+      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
+    ]
   },
   {
     "id": "workflow.market-corporate-client",
@@ -34,12 +40,14 @@
     "display_name_zh": "对公客户营销",
     "path": "skills/workflows/market-corporate-client",
     "entry": "skills/workflows/market-corporate-client/SKILL.md",
-    "summary": "帮助在营销前先识别场景、判断切入口并设计下一步推进动作。",
+    "summary": "用于营销前诊断、切入口设计和会后推进动作。",
     "related_prompts": [
       "prompt.workflow.market-corporate-client"
     ],
     "related_packs": [
-      "pack.banks.ceb.public-basics"
+      "pack.banks.ceb.corporate-settlement.basic-settlement",
+      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
     ]
   },
   {
@@ -49,12 +57,14 @@
     "display_name_zh": "对公客户陪伴",
     "path": "skills/workflows/accompany-corporate-client",
     "entry": "skills/workflows/accompany-corporate-client/SKILL.md",
-    "summary": "帮助做好客户陪伴、问题跟进、节奏维护和长期关系经营。",
+    "summary": "用于会后跟进、问题闭环与客户关系维护。",
     "related_prompts": [
       "prompt.workflow.accompany-corporate-client"
     ],
     "related_packs": [
-      "pack.banks.ceb.public-basics"
+      "pack.banks.ceb.corporate-settlement.basic-settlement",
+      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
     ]
   }
 ]
