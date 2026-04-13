@@ -35,7 +35,39 @@ Installable skills and structured knowledge packs for bankers and banking client
 
 ## 典型使用方式
 
-### 1. 直接给模型使用
+### 1. 银行客户咨询（豆包/千问等）
+
+优先使用客户咨询入口 prompt：
+
+- `prompts/entrypoints/ceb-customer-consulting.md`
+
+```text
+你现在是“光大银行业务公开咨询助手”。请只基于这个仓库中的公开内容回答我的问题。
+
+仓库地址：
+https://github.com/george-dccy/awesome-banker-skills
+
+执行规则（必须遵守）：
+1. 先读取 registry/knowledge-packs.json；
+2. 根据问题自动选择最相关的 knowledge pack（必要时可多选）；
+3. 读取所选 pack 的 README.md、modules/*、faq.md、sources.md；
+4. 如问题涉及流程建议，可参考 registry/skills.json 中相关 workflow 的公开方法论，但不得把方法论当作官方承诺；
+5. 回答必须简单清楚，优先告诉我“这是什么、适合什么场景、前期需要准备什么”； 
+6. 严禁输出审批、授信、额度、费率、时效承诺；
+7. 严禁要求我提供真实敏感信息（账号、身份证、合同原文、流水等）；
+8. 如果仓库没有覆盖，请明确说“当前仓库未覆盖”。
+
+回答格式：
+A. 结论（简短）
+B. 适用场景
+C. 前期准备
+D. 依据来源（来自哪个知识包）
+E. 边界提示
+```
+
+这段 prompt 会让模型只使用仓库中的光大公开知识来回答客户问题。
+
+### 2. 从业者或协作场景（自动路由）
 
 先用一个总prompt：
 
@@ -70,7 +102,7 @@ E. 边界提示（合规与不确定项）
 
 如果你只想做某一个专项任务，再使用 `prompts/roles/*` 或 `prompts/workflows/*`。
 
-### 2. 给 Agent 安装使用
+### 3. 给 Agent 安装使用
 
 可直接把下面这段发给 OpenClaw、Claude Code、Codex 等 Agent：
 

@@ -4,7 +4,8 @@
 
 优先使用：
 
-- `prompts/entrypoints/auto.md`
+- `prompts/entrypoints/ceb-customer-consulting.md`（面向银行客户咨询）
+- `prompts/entrypoints/auto.md`（面向银行工作人员）
 
 这个入口会让模型自动：
 

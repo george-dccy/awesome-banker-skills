@@ -1,16 +1,29 @@
 [
   {
-    "id": "prompt.entrypoint.doubao-auto-router",
+    "id": "prompt.entrypoint.auto",
     "kind": "entrypoint",
-    "title": "Doubao Auto Router Prompt",
-    "display_name_zh": "豆包自动路由总入口 Prompt",
-    "path": "prompts/entrypoints/doubao-auto-router.md",
+    "title": "Auto Router Prompt",
+    "display_name_zh": "自动路由总入口 Prompt",
+    "path": "prompts/entrypoints/auto.md",
     "summary": "让模型自动读取仓库、自动路由 skills 和 knowledge packs。",
     "relations": [
       "role.corp-relationship-manager",
       "workflow.report-to-leader",
       "workflow.market-corporate-client",
       "workflow.accompany-corporate-client",
+      "pack.banks.ceb.corporate-settlement.basic-settlement",
+      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
+      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
+    ]
+  },
+  {
+    "id": "prompt.entrypoint.ceb-customer-consulting",
+    "kind": "entrypoint",
+    "title": "CEB Customer Consulting Prompt",
+    "display_name_zh": "光大银行客户咨询入口 Prompt",
+    "path": "prompts/entrypoints/ceb-customer-consulting.md",
+    "summary": "面向银行客户咨询的入口提示词，自动路由知识包并给出保守回答。",
+    "relations": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",
       "pack.banks.ceb.transaction-banking.yangguang-e-pay",
       "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
