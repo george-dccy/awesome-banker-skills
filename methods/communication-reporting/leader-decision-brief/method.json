@@ -1,0 +1,12 @@
+{
+  "id": "method.communication-reporting.leader-decision-brief",
+  "display_name_zh": "领导拍板简报",
+  "category": "communication-reporting",
+  "visibility": "public",
+  "summary": "把事实、卡点、建议和拍板项压缩成领导易读结构。",
+  "triggers": [
+    "怎么向领导汇报",
+    "怎么让领导快速拍板",
+    "怎么写一句话结论"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "method.management.team-followup-loop",
+  "display_name_zh": "团队跟进闭环",
+  "category": "management",
+  "visibility": "public",
+  "summary": "围绕任务拆解、进度跟踪、复盘修正形成管理闭环。",
+  "triggers": [
+    "怎么带团队跟进",
+    "怎么盯进度",
+    "怎么做闭环管理"
+  ]
+}
