@@ -1,35 +1,80 @@
 # CONTRIBUTING
 
-## 我可以贡献什么
+## 你可以贡献什么
 
-1. 新增岗位 skill（`skills/roles/*`）
-2. 新增流程 skill（`skills/workflows/*`）
-3. 新增知识包（`knowledge-packs/*`）
-4. 改进 prompts、registry、文档
+- 新增或改进岗位 skill：`skills/roles/*`
+- 新增或改进流程 skill：`skills/workflows/*`
+- 新增或改进 knowledge pack：`knowledge-packs/*`
+- 新增或改进 method：`methods/*`
+- 改进 prompts、registry、docs、模板与路由说明
 
-## 用户自蒸馏贡献流程
+## 推荐贡献路径
 
-1. 先完成蒸馏采集  
-   使用 [templates/distill-skill/intake.md](./templates/distill-skill/intake.md)
-2. 生成 skill 草稿  
-   使用 [templates/distill-skill/SKILL.template.md](./templates/distill-skill/SKILL.template.md)
-3. 补齐 `references/` 与 `scripts/*.py`
-4. 在 `registry/skills.json` 注册 skill
-5. 如果涉及公开事实，新增或关联对应 knowledge pack
-6. 更新 README 相关目录说明并提交 PR
+当前推荐走：
 
-## PR 最低检查项
+`private-first -> public-candidate -> merge to public`
 
-- `SKILL.md` 的 `name` 与目录名一致
-- skill 目录包含 `references/` 与 `scripts/`
-- `scripts/` 使用 Python 文件（`.py`）
-- `related_packs` 与 `references/knowledge-routing.md` 一致
-- `registry/*.json` 已同步更新
+原因很简单：
+
+- 很多高价值内容一开始还带有个人经验色彩
+- 很多素材最初还没有完成去敏感化
+- 很多方法需要先在本地磨一轮再决定是否公开
+
+## 建议流程
+
+1. 先采集或整理原料
+   - 文档
+   - 公开链接
+   - 公开网页
+   - 说明材料
+   - 用户经验与案例
+2. 使用 `distill-and-contribute` 判断资产类型与推荐落点
+3. 默认先生成到 `workspace/private/*`
+4. 做增量补全，而不是每次全量重写
+5. 确认可以公开后，再整理为 public candidate
+6. 同步更新对应 `registry/*.json`
+
+## 最低检查项
+
+- 资产类型归类正确，没有混层
+- `skills`、`knowledge-packs`、`methods` 的边界清楚
+- registry path 与真实目录一致
 - 不包含真实敏感信息与内部材料
+- 公开知识类资产补齐来源
+- 公开贡献前明确边界，不输出审批、授信、定价、时效承诺
+
+## 各类资产最低结构
+
+### Skill
+
+- `SKILL.md`
+- `references/`
+- `scripts/*.py`
+
+### Knowledge Pack
+
+- `README.md`
+- `faq.md`
+- `sources.md`
+- `modules/*`
+- `pack.json`（如适用）
+
+### Method
+
+- `README.md`
+- `method.json`
+- `frameworks.md`
+- `examples.md`
+
+## 推荐参考
+
+- [架构说明](./docs/architecture/README.md)
+- [Methods 层说明](./docs/architecture/methods.md)
+- [公开蒸馏流程](./docs/contribution/distillation-workflow.md)
 
 ## 内容红线
 
 - 禁止真实客户数据
 - 禁止内部制度原文
-- 禁止审批、授信、定价承诺
+- 禁止审批、授信、定价、时效承诺
 - 禁止无法公开传播的敏感内容

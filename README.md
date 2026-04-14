@@ -1,224 +1,201 @@
 # Awesome Banker Skills
 
-让银行人不那么累，让业务推动更丝滑。
+面向银行人、聊天大模型和 Agent 的 repo-first 能力底座。
 
-让银行人的优秀经验可安装、可传承、可复用。
+它不是银行客服系统。  
+它要做的是把银行人的共识技能、可公开知识和可复用方法沉淀成一个可以直接给豆包或 Agent 使用的仓库。
 
-`awesome-banker-skills` 是一个面向银行岗位与流程的 Skill 集合，支持：
+## 项目定位
 
-- `skills`：岗位方法论与流程打法
-- `knowledge-packs`：公开知识，包含银行公开信息和产品，以及提升岗位能力的方法
+这个项目重点解决三件事：
 
-## 核心定位
+- 公开沉淀银行岗位共识技能、优秀人员可复用的方法、产品经营路径和可公开知识
+- 支持每个用户在本地继续长出自己的 private skills / knowledge packs / methods / memories / case notes
+- 让银行人少踩坑、少重复劳动、少加班，让业务推动更丝滑
 
-把银行中优秀的工作方法和通用知识沉淀下来，帮助更多银行人：
+当前优先级很明确：
 
-- 少踩坑
-- 少重复劳动
-- 少加班
-- 不要内卷
-- 把优秀经验传承下去
-- 业绩节节高
-- 有更多时间陪伴家人、享受生活
-- 有钱有闲、提升消费，从而让我们的社会变得更好
+- 先优化“仓库直接给豆包 / Agent 使用”的体验
+- 先不做前端依赖
+- 为未来行内落地预留结构，但暂不实现具体内网接口
 
-## 当前架构
+## 资产结构
 
 ```text
 .
 ├─ skills/
 │  ├─ roles/
-│  │  └─ <skill>/SKILL.md + references/ + scripts/
 │  └─ workflows/
-│     └─ <skill>/SKILL.md + references/ + scripts/
 ├─ knowledge-packs/
-│  └─ banks/ceb/
-│     ├─ corporate-settlement/basic-settlement/
-│     ├─ transaction-banking/yangguang-e-pay/
-│     └─ trade-finance/yangguang-electricity-certificate/
+│  ├─ banks/
 │  └─ common/
-│     ├─ banker-thinking/top-performer/
-│     ├─ economics/business-basics/
-│     ├─ sales/consultative-b2b/
-│     └─ psychology/business-communication/
+├─ methods/
+│  ├─ business-operations/
+│  ├─ management/
+│  ├─ communication-reporting/
+│  └─ reusable/
 ├─ prompts/
+│  ├─ entrypoints/
+│  ├─ roles/
+│  ├─ workflows/
+│  ├─ knowledge-packs/
+│  └─ methods/
 ├─ registry/
-└─ workspace/
+│  ├─ skills.json
+│  ├─ knowledge-packs.json
+│  ├─ methods.json
+│  └─ prompts.json
+├─ docs/
+└─ templates/
 ```
 
-## 典型使用方式
+三层核心资产边界：
 
-### 1. 银行客户咨询（豆包/千问等）
+- `skills`：岗位与流程的执行型能力
+- `knowledge-packs`：公开、稳定、可引用的知识事实
+- `methods`：跨岗位、跨流程复用的判断与推进框架
 
-优先使用客户咨询入口 prompt：
+## Public / Private Overlay
 
-- `prompts/entrypoints/ceb-customer-consulting.md`
+公开仓库使用 `public base + private overlay` 模型。
+
+公开层是仓库本体，面向分享、贡献和模型直接读取。  
+私有层默认放在本地：
 
 ```text
-你现在是“光大银行业务公开咨询助手”。请只基于这个仓库中的公开内容回答我的问题。
-
-仓库地址：
-https://github.com/george-dccy/awesome-banker-skills
-
-执行规则（必须遵守）：
-1. 先读取 registry/knowledge-packs.json；
-2. 根据问题自动选择最相关的 knowledge pack（必要时可多选）；
-3. 读取所选 pack 的 README.md、modules/*、faq.md、sources.md；
-4. 如问题涉及流程建议，可参考 registry/skills.json 中相关 workflow 的公开方法论，但不得把方法论当作官方承诺；
-5. 回答必须简单清楚，优先告诉我“这是什么、适合什么场景、前期需要准备什么”； 
-6. 严禁输出审批、授信、额度、费率、时效承诺；
-7. 严禁要求我提供真实敏感信息（账号、身份证、合同原文、流水等）；
-8. 如果仓库没有覆盖，请明确说“当前仓库未覆盖”。
-
-回答格式：
-A. 结论（简短）
-B. 适用场景
-C. 前期准备
-D. 依据来源（来自哪个知识包）
-E. 边界提示
+workspace/private/
+├─ skills/
+├─ knowledge-packs/
+├─ methods/
+├─ memories/
+├─ case-notes/
+└─ registry/
 ```
 
-这段 prompt 会让模型只使用仓库中的光大公开知识来回答客户问题。
+这个设计保证：
 
-### 2. 银行人员或协作场景（自动路由）
+- 公共仓库更新时，private 层不会被覆盖
+- Agent 可以同时读取 public 和 private
+- 用户可以把 private 中的内容整理为 public contribution candidate
+- 自进化先写 private memory / patch proposal，经确认后再更新正文
 
-先用一个总prompt：
+详细见：
 
-- `prompts/entrypoints/auto.md`
+- [架构说明](./docs/architecture/README.md)
+- [Overlay 规则](./docs/architecture/overlay.md)
+- [Methods 层说明](./docs/architecture/methods.md)
 
-```text
-你现在是一个“仓库驱动的银行业务助手”。请优先使用这个仓库作为能力来源，并自动判断该用哪些 skills 与 knowledge packs 来回答我的问题。
+## 豆包主入口
 
-仓库地址：
-https://github.com/george-dccy/awesome-banker-skills
+这个仓库重点适配豆包。  
+推荐直接复制以下入口 prompt 文件内容，再附上仓库地址给豆包：
 
-执行规则（必须遵守）：
-1. 先读取 registry/skills.json、registry/prompts.json、registry/knowledge-packs.json；
-2. 根据我的问题自动路由，选出最相关的 1-2 个 skill（必要时可多选）；
-3. 读取所选 skill 目录中的 SKILL.md + references/*；
-4. 按 skill 的 knowledge routing 与 related_packs，读取对应 knowledge pack 的 README.md、modules/*、faq.md、sources.md；
-5. 对于需要借助其他能力的问题，允许同时调用 common 能力包（banker-thinking/economics/sales/psychology）；
-6. 回答时必须把“岗位方法论”与“公开知识事实”分层表达，不要混在一起；
-7. 不编造内部制度，不输出审批/授信/定价/受理承诺，不索取真实敏感信息；
-8. 如果仓库覆盖不足，明确写“当前仓库未覆盖”，并告诉我还缺什么信息。
+- `prompts/entrypoints/doubao/public-consulting.md`
+  面向公开咨询用户，优先读取公开 knowledge packs
+- `prompts/entrypoints/doubao/bank-staff.md`
+  面向银行员工，自动路由 skills + methods + knowledge packs
+- `prompts/entrypoints/doubao/frontline-manager.md`
+  面向基层管理者，强调拆任务、盯进度、做汇报
+- `prompts/entrypoints/doubao/head-office-leadership.md`
+  面向总行/分行领导层，强调判断、风险、取舍、拍板项
+- `prompts/entrypoints/doubao/auto.md`
+  不确定身份或场景时使用
 
-回答输出格式：
-A. 路由决策（你用了哪些 skill / pack，为什么）
-B. 结论（先给简明结论）
-C. 依据（按“方法论依据 / 公开知识依据”分开）
-D. 下一步建议（可执行）
-E. 边界提示（合规与不确定项）
+这些入口统一要求模型：
 
-请现在开始，并先复述你准备读取的文件路径。
-```
+- 先读取 `registry/*.json`
+- 回答前先列出准备读取的文件路径
+- 显式写出调用了哪些 `skill / method / pack`
+- 把“方法/判断依据”和“公开知识依据”分层表达
+- 覆盖不足时明确写出“当前仓库未覆盖”
 
-这段 prompt 会让模型自动读取 `registry/*.json`，自动选择 skill 和 knowledge pack 再回答。
+补充说明见 [豆包入口说明](./docs/prompts/doubao.md)。
 
-如果你只想做某一个专项任务，再使用 `prompts/roles/*` 或 `prompts/workflows/*`。
+## Agent 使用方式
 
-### 3. 给 Agent 安装使用
+如果你是用 Claude Code、Codex、OpenClaw 或其他 Agent，推荐这样使用这个仓库：
 
-可直接把下面这段发给 OpenClaw、Claude Code、Codex 等 Agent：
+1. 先读取：
+   - `registry/skills.json`
+   - `registry/knowledge-packs.json`
+   - `registry/methods.json`
+   - `registry/prompts.json`
+2. 如果存在 `workspace/private/registry/*.json`，再合并 private overlay
+3. 根据问题路由到最相关的 `skills / methods / knowledge packs`
+4. 读取对应正文
+5. 输出时显式区分：
+   - 方法/判断依据
+   - 公开知识依据
 
-```text
-请帮我安装并启用 awesome-banker-skills 仓库中的技能库。
+## 当前重点资产
 
-仓库地址：
-https://github.com/george-dccy/awesome-banker-skills.git
+### Skills
 
-安装与调用要求：
-1. 拉取仓库到本地工作目录；
-2. 读取 registry/skills.json、registry/knowledge-packs.json、registry/prompts.json；
-3. 启用 registry/skills.json 里全部 skill 的 SKILL.md；
-4. 回答时先做路由：根据用户问题自动选择最相关的 1-2 个 skill；
-5. 读取所选 skill 的 references/* 与 scripts/build-context.py；
-6. 根据 build-context.py 和 SKILL.md 的 related_packs，读取对应 knowledge-pack 的 README.md、modules/*、faq.md、sources.md；
-7. 生成答案后调用 scripts/validate-output.py 做结构检查；
-8. 输出时包含：路由决策、结论、依据、下一步建议、边界提示；
-9. 不输出内部制度、审批/授信/定价承诺，不要求真实敏感数据；
-10. 若仓库未覆盖，明确说“当前仓库未覆盖”，并说明缺失信息。
+- `role.corp-relationship-manager`
+- `workflow.market-corporate-client`
+- `workflow.accompany-corporate-client`
+- `workflow.report-to-leader`
+- `workflow.distill-and-contribute`
 
-安装完成后请回报：
-- 本地路径
-- 已启用 skills 列表
-- 每个 skill 关联的 knowledge packs
-- 推荐我如何提问以获得最佳效果
-```
+### Knowledge Packs
 
-Agent 在执行时的核心调用链：
+- `pack.banks.ceb.corporate-settlement.basic-settlement`
+- `pack.banks.ceb.transaction-banking.yangguang-e-pay`
+- `pack.banks.ceb.trade-finance.yangguang-electricity-certificate`
+- `pack.common.banker-thinking.top-performer`
+- `pack.common.economics.business-basics`
+- `pack.common.sales.consultative-b2b`
+- `pack.common.psychology.business-communication`
 
-- `references/*`（方法论、路由、输出约定）
-- `scripts/build-context.py`（知识包路由）
-- `scripts/validate-output.py`（结构校验）
+### Methods
 
-## 示例
+- `method.business-operations.problem-opportunity-scan`
+- `method.business-operations.client-advance-map`
+- `method.communication-reporting.leader-decision-brief`
+- `method.management.team-followup-loop`
 
-下面是“用户提问 -> Agent 路由 -> 输出回答”的简化示例。
+## 贡献方式
 
-### 示例1：客户咨询 e付通
+推荐走 `private-first -> public-candidate -> merge to public`：
 
-客户问题（示例）：
+1. 先用私有层沉淀草稿
+2. 用 `distill-and-contribute` 整理资产类型、目标路径和变更摘要
+3. 去敏感化、补来源、补边界
+4. 再整理成公开贡献候选
 
-```text
-我们公司订单和开票分属两个团队，财务每个月对账很耗时。你们说的 e付通到底能帮我什么？第一次沟通我需要准备什么？
-```
+相关入口：
 
-### 示例2：客户咨询阳光电费证
+- [CONTRIBUTING](./CONTRIBUTING.md)
+- [公开蒸馏流程](./docs/contribution/distillation-workflow.md)
+- `templates/distill-skill/intake.md`
 
-客户问题（示例）：
+## 行内落地方向
 
-```text
-我们集团电费每月金额不小，账期有时会紧张。阳光电费证是否适合？能直接给我额度和办理周期吗？
-```
+后续支持这些落地方向，但当前版本只做结构预留：
 
-### 示例3：客户经理拜访前准备
+- 可引入行内 claw 类应用安装
+- 可接行内部署的本地模型
+- 可接内部知识源和系统接口
+- 可把 public / private overlay 映射成行内个人或部门工作区
 
-内部问题（示例）：
+## 内容边界
 
-```text
-明天要去拜访一家制造业客户，可能会聊到 e付通和电费证。帮我做会前准备和首次会谈目标。
-```
+仓库不会收录：
 
-## 支持用户贡献
+- 真实客户数据
+- 内部制度原文
+- 内部审批、授信、定价结论
+- 额度、费率、时效承诺
+- 真实敏感参数、账号、证件、合同、流水
 
-项目把“个人经验提取 -> 仓库规范化 -> PR 贡献”设计为标准路径：
+仓库中的所有内容都只用于：
 
-1. 用模板采集你的真实工作样本与判断逻辑  
-   `templates/distill-skill/intake.md`
-2. 按模板生成一个 skill 包  
-   `templates/distill-skill/SKILL.template.md`
-3. 补齐 `references/` 与 `scripts/`
-4. 在 `registry/` 注册并提交 PR
+- 前期理解与准备
+- 沟通、汇报、推进辅助
+- 公开知识和可复用方法沉淀
 
-详细见 [CONTRIBUTING.md](./CONTRIBUTING.md) 与 [docs/distillation/WORKFLOW.md](./docs/distillation/WORKFLOW.md)。
+如果仓库没有依据，应明确写出：`当前仓库未覆盖`
 
-## 能力升级
-
-为了提升银行人的综合工作技能，项目还包含通用能力知识包，并与现有 skills 逻辑关联：
-
-- 顶级银行人思维：`pack.common.banker-thinking.top-performer`
-- 经济学与商业常识：`pack.common.economics.business-basics`
-- 顾问式销售技巧：`pack.common.sales.consultative-b2b`
-- 商业沟通心理学：`pack.common.psychology.business-communication`
-
-这些内容作为“方法增强层”，在 skills 路由中按需调用，以提升银行人的技能和水平。
-
-## FAQ 模块约定（知识包）
-
-每个知识包都应包含 FAQ 能力，用于让 Agent 直接回答客户高频问题：
-
-- 顶层 `faq.md`：高频问答索引与边界口径
-- 模块 `modules/customer-faq.md`：可持续扩充的问题库（来自一线高频提问）
-
-建议每次补充知识包时，同步更新这两个文件。
-
-## 边界与合规
-
-- 不会放真实客户数据
-- 不会放内部制度原文
-- 不会放内部审批、授信、定价结论
-- 不会承诺额度、费率、时效与办理结果
-
-## LICENSE
+## License
 
 [MIT](./LICENSE)
