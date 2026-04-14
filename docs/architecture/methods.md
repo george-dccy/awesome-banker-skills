@@ -24,14 +24,35 @@
 
 ## 与其他层的边界
 
-- `skills`：谁来做、通常怎么做
+- `skills/roles`：谁来做、通常怎么做
+- `skills/workflows`：场景化编排层，也可以理解为 scene-specific playbook
 - `knowledge-packs`：公开事实是什么
 - `methods`：遇到这类问题时，用什么框架处理
+
+## 与 workflow skill 的新边界
+
+- `workflow skill`：场景化编排层，负责识别输入、组织步骤、调用 `methods`、路由 `knowledge-packs`
+- `method`：可复用框架层，负责提供判断、推进、复盘、汇报的通用框架
+
+可以用下面的三问法判断内容应该放哪里：
+
+1. 脱离当前场景是否还能复用
+2. 这是在讲“怎么思考/判断/推进”，还是在讲“这次任务怎么组织”
+3. 换一个岗位或流程后是否仍然自然
+
+更具体地说：
+
+- 应优先放进 `workflow skill` 的，是某个场景的最低输入、编排顺序、输出契约、边界约束
+- 应优先放进 `method` 的，是跨多个 workflow 仍可复用的判断框架、推进方法、复盘方法、汇报框架
+
+推荐路由层级是：
+
+`scene -> workflow -> method -> knowledge pack`
 
 `methods` 不是：
 
 - 岗位人格
-- 工作流清单的替代品
+- workflow 场景编排的替代品
 - 事实知识库
 
 ## 目录结构
@@ -72,6 +93,6 @@ methods/<category>/<slug>/
 
 ## 使用原则
 
-- 先给业务判断，再给方法框架
+- 先识别场景，再进入 workflow，再调用方法框架
 - methods 默认是增强层，不应喧宾夺主
 - 任何 method 都应附带银行场景示例，避免空泛

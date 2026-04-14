@@ -27,9 +27,13 @@
     "display_name_zh": "向领导汇报",
     "path": "skills/workflows/report-to-leader",
     "entry": "skills/workflows/report-to-leader/SKILL.md",
-    "summary": "把业务进展整理成可拍板的领导汇报结构。",
+    "summary": "面向银行汇报场景的编排资产，负责组织事实、方法和拍板项输出。",
+    "orchestration_focus": "银行汇报场景编排",
     "related_prompts": [
       "prompt.workflow.report-to-leader"
+    ],
+    "related_methods": [
+      "method.communication-reporting.leader-decision-brief"
     ],
     "related_packs": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",
@@ -47,9 +51,14 @@
     "display_name_zh": "对公客户营销",
     "path": "skills/workflows/market-corporate-client",
     "entry": "skills/workflows/market-corporate-client/SKILL.md",
-    "summary": "用于营销前诊断、切入口设计和会后推进动作。",
+    "summary": "面向首访营销场景的编排资产，负责组织诊断、切入口设计和下一步推进。",
+    "orchestration_focus": "首访营销场景编排",
     "related_prompts": [
       "prompt.workflow.market-corporate-client"
+    ],
+    "related_methods": [
+      "method.business-operations.problem-opportunity-scan",
+      "method.business-operations.client-advance-map"
     ],
     "related_packs": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",
@@ -68,9 +77,14 @@
     "display_name_zh": "对公客户陪伴",
     "path": "skills/workflows/accompany-corporate-client",
     "entry": "skills/workflows/accompany-corporate-client/SKILL.md",
-    "summary": "用于会后跟进、问题闭环与客户关系维护。",
+    "summary": "面向客户陪伴场景的编排资产，负责关系推进、问题闭环和下次触达计划。",
+    "orchestration_focus": "客户陪伴场景编排",
     "related_prompts": [
       "prompt.workflow.accompany-corporate-client"
+    ],
+    "related_methods": [
+      "method.business-operations.client-advance-map",
+      "method.management.team-followup-loop"
     ],
     "related_packs": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",

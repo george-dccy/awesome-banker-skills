@@ -2,24 +2,30 @@
 
 面向银行人、聊天大模型和 Agent 的 repo-first 能力底座。
 
-它不是银行客服系统。  
-它要做的是把银行人的共识技能、可公开知识和可复用方法沉淀成一个可以直接给豆包或 Agent 使用的仓库。
+它能做银行问答客服，但更重要的是可以把银行人的共识技能、可公开知识和可复用方法沉淀下来，直接给豆包或 Agent 使用。
 
-## 项目定位
+## 项目背景
 
-这个项目重点解决三件事：
+银行工作的很多技能是跨岗位、跨流程复用的。
+银行人需要不断学习、积累、总结，才能在业务中游刃有余。
+但银行人往往没有时间、精力、动力去整理这些知识。
+ 而且，这些知识往往分散在各个人的大脑中，难以共享和复用。
 
-- 公开沉淀银行岗位共识技能、优秀人员可复用的方法、产品经营路径和可公开知识
+### 这个项目希望能够
+
+- 沉淀银行岗位共识技能、优秀人员可复用的方法、产品经营路径和可公开知识
 - 支持每个用户在本地继续长出自己的 private skills / knowledge packs / methods / memories / case notes
-- 让银行人少踩坑、少重复劳动、少加班，让业务推动更丝滑
+- 不管是银行人还是银行客户，直接给豆包 / Agent 发送一段提示词，就能开始工作
+- 为未来银行内部落地预留结构，支持添加行内知识源、连接客户数据，进行更复杂的判断和决策
+- 让银行人少踩坑、少重复劳动、少加班，让业务推动更丝滑、业绩节节高，有更多时间陪伴家人、享受生活、提升消费，从而让我们的社会变得更好
 
-当前优先级很明确：
+当前版本优先级：
 
 - 先优化“仓库直接给豆包 / Agent 使用”的体验
 - 先不做前端依赖
 - 为未来行内落地预留结构，但暂不实现具体内网接口
 
-## 资产结构
+## 项目结构
 
 ```text
 .
@@ -49,11 +55,22 @@
 └─ templates/
 ```
 
-三层核心资产边界：
+结构解释：
 
-- `skills`：岗位与流程的执行型能力
+- `skills/roles`：岗位 skill，沉淀角色视角与职责重点
+- `skills/workflows`：workflow skills，作为场景化编排资产，负责组织输入、调用 methods 和 knowledge packs
 - `knowledge-packs`：公开、稳定、可引用的知识事实
-- `methods`：跨岗位、跨流程复用的判断与推进框架
+- `methods`：可复用判断与推进框架，不直接替代具体 workflow 的场景编排
+
+### workflow / method 三问法
+
+1. 脱离当前场景是否还能复用
+2. 这是在讲框架，还是在讲场景编排
+3. 换一个岗位或流程后是否仍自然
+
+推荐路由层级：
+
+`scene -> workflow -> method -> knowledge pack`
 
 ## Public / Private Overlay
 
@@ -72,7 +89,7 @@ workspace/private/
 └─ registry/
 ```
 
-这个设计保证：
+这个设计可保证：
 
 - 公共仓库更新时，private 层不会被覆盖
 - Agent 可以同时读取 public 和 private
@@ -87,25 +104,25 @@ workspace/private/
 
 ## 豆包主入口
 
-这个仓库重点适配豆包。  
-推荐直接复制以下入口 prompt 文件内容，再附上仓库地址给豆包：
+项目适配了豆包/千问等大模型聊天应用。推荐直接复制以下入口 prompt 文件内容，再附上仓库地址给豆包：
 
 - `prompts/entrypoints/doubao/public-consulting.md`
   面向公开咨询用户，优先读取公开 knowledge packs
 - `prompts/entrypoints/doubao/bank-staff.md`
-  面向银行员工，自动路由 skills + methods + knowledge packs
+  面向银行员工，先识别 scene，再由 workflow 调用 methods 和 knowledge packs
 - `prompts/entrypoints/doubao/frontline-manager.md`
-  面向基层管理者，强调拆任务、盯进度、做汇报
+  面向基层管理者，优先进入管理或汇报 workflow，再组织方法与知识读取
 - `prompts/entrypoints/doubao/head-office-leadership.md`
-  面向总行/分行领导层，强调判断、风险、取舍、拍板项
+  面向总行/分行领导层，优先进入决策支持 workflow，再补方法和事实依据
 - `prompts/entrypoints/doubao/auto.md`
   不确定身份或场景时使用
 
-这些入口统一要求模型：
+这些入口要求模型：
 
 - 先读取 `registry/*.json`
 - 回答前先列出准备读取的文件路径
-- 显式写出调用了哪些 `skill / method / pack`
+- 先识别 `scene`，再选择 `workflow`
+- 显式写出调用了哪些 `workflow skill / method / pack`
 - 把“方法/判断依据”和“公开知识依据”分层表达
 - 覆盖不足时明确写出“当前仓库未覆盖”
 
@@ -121,9 +138,10 @@ workspace/private/
    - `registry/methods.json`
    - `registry/prompts.json`
 2. 如果存在 `workspace/private/registry/*.json`，再合并 private overlay
-3. 根据问题路由到最相关的 `skills / methods / knowledge packs`
-4. 读取对应正文
-5. 输出时显式区分：
+3. 先识别 `scene`，再路由到最相关的 `workflow`
+4. 由 `workflow` 决定需要调用哪些 `methods / knowledge packs`
+5. 读取对应正文
+6. 输出时显式区分：
    - 方法/判断依据
    - 公开知识依据
 
@@ -171,7 +189,7 @@ workspace/private/
 
 ## 行内落地方向
 
-后续支持这些落地方向，但当前版本只做结构预留：
+后续计划支持这些落地方向，当前版本只做结构预留：
 
 - 可引入行内 claw 类应用安装
 - 可接行内部署的本地模型

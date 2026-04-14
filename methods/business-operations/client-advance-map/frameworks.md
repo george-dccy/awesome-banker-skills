@@ -17,3 +17,8 @@
 - 时间点
 - 风险点
 - 回看信号
+
+## 复用提醒
+
+- 在 `workflow.market-corporate-client` 中，它负责把首次接触变成可执行的下一步动作
+- 在 `workflow.accompany-corporate-client` 中，它负责把持续陪伴变成明确的推进节奏和闭环信号

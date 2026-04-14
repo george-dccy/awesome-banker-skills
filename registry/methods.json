@@ -7,6 +7,9 @@
     "path": "methods/business-operations/problem-opportunity-scan",
     "summary": "识别客户当前卡点，并判断是否存在可推进的业务机会。",
     "visibility": "public",
+    "used_by_workflows": [
+      "workflow.market-corporate-client"
+    ],
     "relations": [
       "role.corp-relationship-manager",
       "workflow.market-corporate-client",
@@ -23,6 +26,10 @@
     "path": "methods/business-operations/client-advance-map",
     "summary": "把客户沟通从聊过了，推进到下一步谁做什么、何时闭环。",
     "visibility": "public",
+    "used_by_workflows": [
+      "workflow.market-corporate-client",
+      "workflow.accompany-corporate-client"
+    ],
     "relations": [
       "role.corp-relationship-manager",
       "workflow.market-corporate-client",
@@ -39,6 +46,9 @@
     "path": "methods/communication-reporting/leader-decision-brief",
     "summary": "把业务事实、卡点、建议动作整理为领导可快速拍板的简报结构。",
     "visibility": "public",
+    "used_by_workflows": [
+      "workflow.report-to-leader"
+    ],
     "relations": [
       "workflow.report-to-leader",
       "pack.common.banker-thinking.top-performer",
@@ -53,6 +63,10 @@
     "path": "methods/management/team-followup-loop",
     "summary": "帮助基层管理者拆任务、盯进展、做复盘，形成稳定闭环。",
     "visibility": "public",
+    "used_by_workflows": [
+      "workflow.accompany-corporate-client",
+      "workflow.report-to-leader"
+    ],
     "relations": [
       "workflow.report-to-leader",
       "workflow.accompany-corporate-client",

@@ -7,6 +7,9 @@ compatibility:
 metadata:
   banker_kind: workflow
   display_name_zh: 向领导汇报
+  orchestration_focus: 银行汇报场景编排
+  related_methods:
+    - method.communication-reporting.leader-decision-brief
   related_packs:
     - pack.banks.ceb.corporate-settlement.basic-settlement
     - pack.banks.ceb.transaction-banking.yangguang-e-pay
@@ -24,17 +27,33 @@ metadata:
 
 ## Scope
 
-把“信息汇报”升级成“决策支持”，输出必须支持领导快速判断是否继续推进。
+这个 workflow 是“银行汇报场景编排器”，负责组织汇报所需事实、调用 `leader-decision-brief` 方法，并输出可拍板结果。
 
 ## Required Reads
 
 1. `references/report-structure.md`
 2. `references/decision-signals.md`
 3. `references/knowledge-routing.md`
+4. `method.communication-reporting.leader-decision-brief`
 
 ## Knowledge Link
 
 当汇报涉及产品事实时，从 `references/knowledge-routing.md` 路由到对应 knowledge pack。
+
+## Input Contract
+
+最低输入：
+
+- 汇报类型
+- 当前进展
+- 当前卡点
+- 期望领导拍板或支持的事项
+
+## Orchestration Rule
+
+1. 先采集当前阶段的关键事实和变化
+2. 再用 `leader-decision-brief` 组织成可拍板结构
+3. 涉及公开产品事实时，再补充对应 knowledge pack 依据
 
 ## Output Contract
 

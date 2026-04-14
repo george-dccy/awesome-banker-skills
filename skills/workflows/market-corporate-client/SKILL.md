@@ -7,6 +7,10 @@ compatibility:
 metadata:
   banker_kind: workflow
   display_name_zh: 对公客户营销
+  orchestration_focus: 首访营销场景编排
+  related_methods:
+    - method.business-operations.problem-opportunity-scan
+    - method.business-operations.client-advance-map
   related_packs:
     - pack.banks.ceb.corporate-settlement.basic-settlement
     - pack.banks.ceb.transaction-banking.yangguang-e-pay
@@ -25,7 +29,7 @@ metadata:
 
 ## Scope
 
-这个 workflow 聚焦“营销前”和“首次接触”，目标是形成可执行的切入口与下一步动作。  
+这个 workflow 是“首访营销场景编排器”，聚焦“营销前”和“首次接触”，负责组织输入、调用方法框架和知识包，不再承载通用客户推进方法本体。
 强调“先诊断再推荐”，避免一上来堆产品信息。
 
 ## 适用场景
@@ -39,7 +43,24 @@ metadata:
 1. `references/pre-call-diagnosis.md`
 2. `references/opening-playbook.md`
 3. `references/knowledge-routing.md`
-4. 命中业务包后，读取对应 `README.md`、`modules/*`、`faq.md`
+4. `method.business-operations.problem-opportunity-scan`
+5. `method.business-operations.client-advance-map`
+6. 命中业务包后，读取对应 `README.md`、`modules/*`、`faq.md`
+
+## Orchestration Rule
+
+1. 先用 `problem-opportunity-scan` 判断客户卡点与机会
+2. 再用 `client-advance-map` 明确首次会谈目标和最小推进动作
+3. 最后按 `knowledge-routing` 命中需要补充的公开知识包
+
+## Input Contract
+
+最低输入：
+
+- 行业
+- 当前卡点
+- 会谈对象
+- 希望达成的最小结果
 
 ## Output Contract
 
@@ -55,6 +76,7 @@ metadata:
 ## Quality Gate
 
 - 是否先输出场景判断，再输出产品建议
+- 是否先调用相关 method，再落到具体知识包
 - 是否引用了相应产品包 FAQ 进行客户问题应答
 - 是否包含明确下一步时间点与责任人
 - 是否避免审批、额度、费率、时效承诺
