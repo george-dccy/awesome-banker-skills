@@ -1,27 +1,16 @@
 # Distillation Workflow
 
-## 目标
+这里保留兼容入口。
 
-把个人经验中的“可复用工作方式”沉淀为可安装 Skill，并可贡献到仓库。
+新版公开贡献流程见：
 
-## 步骤
+- `docs/contribution/distillation-workflow.md`
 
-1. **采集原料**  
-   填写 `templates/distill-skill/intake.md`，记录真实工作样本。
-2. **提炼结构**  
-   抽取：触发场景、判断框架、动作顺序、输出格式、失败场景。
-3. **落地 Skill**  
-   创建 `SKILL.md + references/ + scripts/*.py`。
-4. **关联知识**  
-   在 `related_packs` 和 `references/knowledge-routing.md` 中显式声明关联。
-5. **注册发现**  
-   更新 `registry/skills.json`（必要时更新 `registry/prompts.json`）。
-6. **提 PR**  
-   说明来源、边界和验证方式。
+当前仓库已经从“只蒸馏 skill”升级为“蒸馏 role skill / workflow skill / knowledge pack / method”。
 
-## 可复用判断标准
+如果你要开始整理内容，建议先读：
 
-- 脱离个人背景后仍可执行
-- 输入输出可描述、可校验
-- 风险边界清晰
-- 能与现有 knowledge packs 协同
+1. `docs/architecture/README.md`
+2. `docs/architecture/overlay.md`
+3. `docs/architecture/methods.md`
+4. `docs/contribution/distillation-workflow.md`
