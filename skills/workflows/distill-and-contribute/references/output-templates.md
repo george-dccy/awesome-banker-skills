@@ -7,6 +7,17 @@
 - `scripts/*.py`
 - `registry/skills.json`
 
+推荐正文结构：
+
+- `Scope`
+- `Role Mission And Boundary`
+- `Default Lens`
+- `Priority Rules`
+- `Stakeholder Map`
+- `Common Anti-Patterns`
+- `Invocation Rules`
+- `Response Style`
+
 ## Workflow Skill
 
 - `SKILL.md`

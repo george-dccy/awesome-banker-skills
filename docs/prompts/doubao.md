@@ -17,19 +17,19 @@
 
 - 文件：`prompts/entrypoints/doubao/bank-staff.md`
 - 适合：客户经理、产品协同、业务支持人员
-- 特点：优先读 skills + methods + packs，输出路由决策、判断和下一步动作
+- 特点：先识别岗位，如有对应 role skill 则作为岗位视角层一并调用，再进入 workflow，并补 methods 与 packs
 
 ### 3. 基层管理者入口
 
 - 文件：`prompts/entrypoints/doubao/frontline-manager.md`
 - 适合：团队负责人、支行长、基层管理者
-- 特点：强调拆任务、盯进度、做闭环、形成汇报口径
+- 特点：先叠加管理者角色视角，再强调拆任务、盯进度、做闭环、形成汇报口径
 
 ### 4. 总行领导层入口
 
 - 文件：`prompts/entrypoints/doubao/head-office-leadership.md`
 - 适合：总行或分行中高层
-- 特点：强调判断、关键事实、风险、取舍、拍板项
+- 特点：先叠加领导层角色视角，再强调判断、关键事实、风险、取舍、拍板项
 
 ### 5. 自动路由入口
 
@@ -42,8 +42,9 @@
 所有豆包入口都要求模型：
 
 - 先读取 `registry/*.json`
+- 先识别身份或岗位，如有对应 role skill 则作为岗位视角层一并调用，但不替代 workflow
 - 回答前先列出准备读取的文件路径
-- 显式写出调用了哪些 `skill / method / pack`
+- 显式写出调用了哪些 `role skill / workflow skill / method / pack`
 - 把“方法/判断依据”和“公开知识依据”分开
 - 覆盖不足时明确写出“当前仓库未覆盖”
 

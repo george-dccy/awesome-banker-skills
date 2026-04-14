@@ -46,13 +46,20 @@ workspace/private/
 - 失败教训
 - 暂不公开的半成品资产
 
-## 三层资产边界
+## 四层资产边界
 
-- `skills`：岗位与流程的执行型能力
+- `skills/roles`：岗位视角层，回答“这个岗位通常先看什么、先判断什么、先避开什么、该调用什么资产”
+- `skills/workflows`：场景编排层，负责组织输入、步骤、输出和资产调用
 - `knowledge-packs`：公开、稳定、可引用的知识事实
 - `methods`：跨岗位、跨流程复用的判断与推进框架
 
 这三层必须保持分离，不互相混写。
+
+推荐主路由：
+
+`scene -> workflow -> method -> knowledge pack`
+
+如果身份明确，可额外叠加 `role skill` 作为 `role overlay`，但它不替代 workflow。
 
 ## 设计原则
 

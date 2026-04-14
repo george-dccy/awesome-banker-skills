@@ -49,7 +49,7 @@ metadata:
 至少明确以下信息：
 
 - 输入材料来源
-- 目标内容更像 role / workflow / knowledge pack / method 哪一类
+- 目标内容更像岗位视角层 / workflow / knowledge pack / method 哪一类
 - 目标是 `private-first` 还是 `public-candidate`
 - 是新建、补全、修订，还是 private 转 public
 
@@ -57,10 +57,12 @@ metadata:
 
 ## Classification Rule
 
-- 岗位视角、角色判断、角色动作 -> `skills/roles`
+- 岗位使命、默认视角、优先级规则、关键对象沟通差异、常见误区、调用规则 -> `skills/roles`
 - 输入、动作、输出、检查点、失败场景 -> `skills/workflows`
 - 公开事实、公开产品、公开来源 -> `knowledge-packs/banks` 或 `knowledge-packs/common`
 - 跨岗位复用的判断与推进框架 -> `methods`
+
+`role skill` 是岗位视角层，不负责承载 workflow 的动作顺序和输出结构，也不负责承载可跨岗位复用的方法框架。
 
 ## Default Flow
 
@@ -84,6 +86,8 @@ metadata:
 
 ## Quality Gate
 
+- 是否误把岗位视角写成 workflow 编排
+- 是否误把跨岗位复用框架写进 role skill
 - 是否误把方法论写进 knowledge pack
 - 是否误把公开事实写进 skill
 - 是否优先做增量更新，而不是整包重写

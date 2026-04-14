@@ -1,15 +1,15 @@
-# Awesome Banker Skills
+# Awesome Banker Skills / 银行人.skill
 
-面向银行人、聊天大模型和 Agent 的 repo-first 能力底座。
+面向银行人、聊天大模型和 Agent 的能力基础，也同步支持公开咨询类问答。
 
-它能做银行问答客服，但更重要的是可以把银行人的共识技能、可公开知识和可复用方法沉淀下来，直接给豆包或 Agent 使用。
+它把银行人的共识技能、可公开知识和可复用方法沉淀下来，直接给豆包或 Agent 使用。目标不是做标准银行客服，而是做银行人的 skill 底座。
 
 ## 项目背景
 
 银行工作的很多技能是跨岗位、跨流程复用的。
 银行人需要不断学习、积累、总结，才能在业务中游刃有余。
 但银行人往往没有时间、精力、动力去整理这些知识。
- 而且，这些知识往往分散在各个人的大脑中，难以共享和复用。
+这些知识往往分散在各个人的大脑中，难以共享和复用。
 
 ### 这个项目希望能够
 
@@ -19,11 +19,66 @@
 - 为未来银行内部落地预留结构，支持添加行内知识源、连接客户数据，进行更复杂的判断和决策
 - 让银行人少踩坑、少重复劳动、少加班，让业务推动更丝滑、业绩节节高，有更多时间陪伴家人、享受生活、提升消费，从而让我们的社会变得更好
 
-当前版本优先级：
+## 主入口
 
-- 先优化“仓库直接给豆包 / Agent 使用”的体验
-- 先不做前端依赖
-- 为未来行内落地预留结构，但暂不实现具体内网接口
+项目适配了豆包/千问等大模型聊天应用。推荐直接复制以下入口 prompt 文件内容，再附上 Gitee 仓库地址及问题：
+
+- `prompts/entrypoints/doubao/public-consulting.md`
+  面向公开咨询用户，优先读取公开 knowledge packs
+- `prompts/entrypoints/doubao/bank-staff.md`
+  面向银行员工，先识别岗位；如有对应 role skill 则作为岗位视角层一并调用，再由 workflow 调用 methods 和 knowledge packs
+- `prompts/entrypoints/doubao/frontline-manager.md`
+  面向基层管理者，先叠加管理者角色视角，再进入管理或汇报 workflow
+- `prompts/entrypoints/doubao/head-office-leadership.md`
+  面向总行/分行领导层，先叠加领导层角色视角，再进入决策支持 workflow
+- `prompts/entrypoints/doubao/auto.md`
+  不确定身份或场景时使用
+
+这些入口要求模型：
+
+- 先读取 `registry/*.json`
+- 先识别身份或岗位，如有对应 `role skill` 则作为岗位视角层一并调用，但不替代 workflow
+- 回答前先列出准备读取的文件路径
+- 先识别 `scene`，再选择 `workflow`
+- 显式写出调用了哪些 `role skill / workflow skill / method / pack`
+- 把“方法/判断依据”和“公开知识依据”分层表达
+- 覆盖不足时明确写出“当前仓库未覆盖”
+
+补充说明见 [豆包入口说明](./docs/prompts/doubao.md)。
+
+## Agent 使用方式
+
+如果你有自己的 Agent，不必先手动讲解仓库结构。可以直接把下面这段提示词发给它：
+
+```text
+请把 `https://gitee.com/georgedccy/awesome-banker-skills.git` 作为我的银行业务 skill 仓库，并按下面方式工作：
+
+1. 先拉取或更新这个仓库到本地工作目录。
+2. 读取 `registry/skills.json`、`registry/methods.json`、`registry/knowledge-packs.json`、`registry/prompts.json`。
+3. 如果你的运行环境支持 skill 安装，就把本轮需要的 skill 安装到本地；如果不支持，就直接按仓库里的 `SKILL.md`、`README.md`、`frameworks.md` 使用。
+4. 如果存在 `workspace/private/registry/*.json`，一并作为 private overlay 读取。
+5. 先识别我的身份或岗位；如果仓库里有对应 role skill，请把它作为岗位视角层一并调用，不要用它替代 workflow。
+6. 再识别我的问题属于哪个 scene，并选择对应 workflow。
+7. 由 workflow 决定需要调用哪些 methods 和 knowledge packs，role skill 只负责补岗位判断视角。
+8. 回答前先列出准备读取的文件路径。
+9. 回答时明确写出：调用的 role skill / workflow skill / method / pack、方法判断依据、公开知识依据、下一步建议、边界提示。
+10. 如果仓库没有覆盖，直接写“当前仓库未覆盖”。
+
+现在开始，先告诉我你准备读取哪些文件。
+```
+
+这段提示词兼容两种方式：
+
+- 支持安装 skill 的 Agent，可以把本轮需要的 skill 装到本地再使用
+- 不支持安装 skill 的 Agent，也可以直接按 repo-first 方式读取仓库并开始问答
+
+适合直接发给 Agent 的示例问题：
+
+- 我是对公客户经理，明天首访一家做新能源零部件的客户，应该怎么开场、问什么、先推进什么？
+- 客户问“光大 e 付通适合什么场景、前期要准备什么”，请按公开口径回答。
+- 我是基层管理者，团队里两个重点客户推进卡住了，帮我拆任务、定检查点、整理上提事项。
+- 把这周某个交易银行项目的进展，整理成一版 30 秒口头汇报和一版书面简版。
+- 我有一份公开材料和几次失败案例，帮我先沉淀到 private，再整理成可提交 Gitee PR 的公开候选。
 
 ## 项目结构
 
@@ -57,22 +112,23 @@
 
 结构解释：
 
-- `skills/roles`：岗位 skill，沉淀角色视角与职责重点
-- `skills/workflows`：workflow skills，作为场景化编排资产，负责组织输入、调用 methods 和 knowledge packs
+- `skills/roles`：岗位视角层，回答“这个岗位通常先看什么、先判断什么、先避开什么、该调什么资产”
+- `skills/workflows`：workflow skills，场景化编排层，负责组织输入、调用 methods 和 knowledge packs
 - `knowledge-packs`：公开、稳定、可引用的知识事实
-- `methods`：可复用判断与推进框架，不直接替代具体 workflow 的场景编排
-
-### workflow / method 三问法
-
-1. 脱离当前场景是否还能复用
-2. 这是在讲框架，还是在讲场景编排
-3. 换一个岗位或流程后是否仍自然
+- `methods`：可复用判断与推进框架
 
 推荐路由层级：
 
 `scene -> workflow -> method -> knowledge pack`
 
-## Public / Private Overlay
+如果身份明确，可叠加对应 `role skill` 作为岗位视角层。
+
+补充边界：
+
+- `role skill` 不应承载 workflow 的最低输入、动作顺序和输出结构
+- `method` 不应被写回 role skill 里充当岗位专属套路
+
+## 支持公开和私有内容
 
 公开仓库使用 `public base + private overlay` 模型。
 
@@ -89,7 +145,7 @@ workspace/private/
 └─ registry/
 ```
 
-这个设计可保证：
+这样可保证：
 
 - 公共仓库更新时，private 层不会被覆盖
 - Agent 可以同时读取 public 和 private
@@ -102,99 +158,56 @@ workspace/private/
 - [Overlay 规则](./docs/architecture/overlay.md)
 - [Methods 层说明](./docs/architecture/methods.md)
 
-## 豆包主入口
-
-项目适配了豆包/千问等大模型聊天应用。推荐直接复制以下入口 prompt 文件内容，再附上仓库地址给豆包：
-
-- `prompts/entrypoints/doubao/public-consulting.md`
-  面向公开咨询用户，优先读取公开 knowledge packs
-- `prompts/entrypoints/doubao/bank-staff.md`
-  面向银行员工，先识别 scene，再由 workflow 调用 methods 和 knowledge packs
-- `prompts/entrypoints/doubao/frontline-manager.md`
-  面向基层管理者，优先进入管理或汇报 workflow，再组织方法与知识读取
-- `prompts/entrypoints/doubao/head-office-leadership.md`
-  面向总行/分行领导层，优先进入决策支持 workflow，再补方法和事实依据
-- `prompts/entrypoints/doubao/auto.md`
-  不确定身份或场景时使用
-
-这些入口要求模型：
-
-- 先读取 `registry/*.json`
-- 回答前先列出准备读取的文件路径
-- 先识别 `scene`，再选择 `workflow`
-- 显式写出调用了哪些 `workflow skill / method / pack`
-- 把“方法/判断依据”和“公开知识依据”分层表达
-- 覆盖不足时明确写出“当前仓库未覆盖”
-
-补充说明见 [豆包入口说明](./docs/prompts/doubao.md)。
-
-## Agent 使用方式
-
-如果你是用 Claude Code、Codex、OpenClaw 或其他 Agent，推荐这样使用这个仓库：
-
-1. 先读取：
-   - `registry/skills.json`
-   - `registry/knowledge-packs.json`
-   - `registry/methods.json`
-   - `registry/prompts.json`
-2. 如果存在 `workspace/private/registry/*.json`，再合并 private overlay
-3. 先识别 `scene`，再路由到最相关的 `workflow`
-4. 由 `workflow` 决定需要调用哪些 `methods / knowledge packs`
-5. 读取对应正文
-6. 输出时显式区分：
-   - 方法/判断依据
-   - 公开知识依据
-
-## 当前重点资产
-
-### Skills
-
-- `role.corp-relationship-manager`
-- `workflow.market-corporate-client`
-- `workflow.accompany-corporate-client`
-- `workflow.report-to-leader`
-- `workflow.distill-and-contribute`
-
-### Knowledge Packs
-
-- `pack.banks.ceb.corporate-settlement.basic-settlement`
-- `pack.banks.ceb.transaction-banking.yangguang-e-pay`
-- `pack.banks.ceb.trade-finance.yangguang-electricity-certificate`
-- `pack.common.banker-thinking.top-performer`
-- `pack.common.economics.business-basics`
-- `pack.common.sales.consultative-b2b`
-- `pack.common.psychology.business-communication`
-
-### Methods
-
-- `method.business-operations.problem-opportunity-scan`
-- `method.business-operations.client-advance-map`
-- `method.communication-reporting.leader-decision-brief`
-- `method.management.team-followup-loop`
-
-## 贡献方式
+## 提交方式
 
 推荐走 `private-first -> public-candidate -> merge to public`：
 
 1. 先用私有层沉淀草稿
 2. 用 `distill-and-contribute` 整理资产类型、目标路径和变更摘要
 3. 去敏感化、补来源、补边界
-4. 再整理成公开贡献候选
+4. 再整理成公开提交候选
+
+### 如何用仓库内置 skill 沉淀内容
+
+推荐优先使用 `workflow.distill-and-contribute`。它适合做四类事：
+
+- 把公开文档、公开网页、说明材料整理成 knowledge pack / method / role skill / workflow skill
+- 帮你判断内容应该落在 `skills`、`knowledge-packs` 还是 `methods`
+- 先生成到 `workspace/private/*`，再决定是否公开
+- 基于已有内容做增量补全，而不是整包重写
+
+你可以直接对 Agent 这样下指令：
+
+- “请使用 `workflow.distill-and-contribute`，把这份公开材料整理成 knowledge pack 草稿，先写到 `workspace/private/knowledge-packs/`。”
+- “请使用 `workflow.distill-and-contribute`，把我这几次客户推进的失败复盘整理成 private method，先不要公开。”
+- “请使用 `workflow.distill-and-contribute`，把 `workspace/private` 里的这几个草稿整理成公开贡献候选，并补 sources、registry 变更建议和 PR 摘要。”
+
+推荐动作顺序：
+
+1. 准备原料：公开文档、公开链接、公开网页、个人经验、失败教训、案例笔记。
+2. 让 Agent 调用 `workflow.distill-and-contribute`，先判断资产类型和推荐落点。
+3. 默认先写入 `workspace/private/skills`、`workspace/private/knowledge-packs`、`workspace/private/methods`、`workspace/private/memories`、`workspace/private/case-notes`。
+4. 让 Agent 做增量补全，补 README、sources、faq、modules、registry 建议，而不是每次整包重写。
+5. 你自己检查公开边界，确认没有敏感信息、内部制度、审批口径和无法公开传播的内容。
+6. 再让 Agent 生成 public candidate、变更摘要和 PR 草稿。
+7. 提交到 Gitee，并优先向 Gitee 发起 PR。
+
+### 公开仓库协作入口
+
+- Gitee 主仓库：`https://gitee.com/georgedccy/awesome-banker-skills.git`
+- GitHub 镜像仓库：`https://github.com/george-dccy/awesome-banker-skills.git`
+
+协作约定：
+
+- 优先向 Gitee 提交 PR
+- GitHub 主要用于展示、同步和备份
+- 以 Gitee 上的 PR 讨论和合并为准
 
 相关入口：
 
 - [CONTRIBUTING](./CONTRIBUTING.md)
-- [公开蒸馏流程](./docs/contribution/distillation-workflow.md)
+- [公开提炼流程](./docs/contribution/distillation-workflow.md)
 - `templates/distill-skill/intake.md`
-
-## 行内落地方向
-
-后续计划支持这些落地方向，当前版本只做结构预留：
-
-- 可引入行内 claw 类应用安装
-- 可接行内部署的本地模型
-- 可接内部知识源和系统接口
-- 可把 public / private overlay 映射成行内个人或部门工作区
 
 ## 内容边界
 

@@ -5,7 +5,7 @@
     "title": "Doubao Auto Prompt",
     "display_name_zh": "豆包自动路由总入口",
     "path": "prompts/entrypoints/doubao/auto.md",
-    "summary": "先判断使用者身份，再自动选择豆包对应入口逻辑。",
+    "summary": "先判断使用者身份，再把 role skill 作为岗位视角层叠加并选择豆包对应入口逻辑。",
     "relations": [
       "method.business-operations.problem-opportunity-scan",
       "method.business-operations.client-advance-map",
@@ -36,7 +36,7 @@
     "title": "Doubao Bank Staff Prompt",
     "display_name_zh": "豆包银行员工入口",
     "path": "prompts/entrypoints/doubao/bank-staff.md",
-    "summary": "面向银行员工，路由 skills、methods 与公开知识资产。",
+    "summary": "面向银行员工，先叠加 role skill 作为岗位视角层，再路由 workflow、method 与公开知识资产。",
     "relations": [
       "role.corp-relationship-manager",
       "workflow.market-corporate-client",
@@ -53,7 +53,7 @@
     "title": "Doubao Frontline Manager Prompt",
     "display_name_zh": "豆包基层管理者入口",
     "path": "prompts/entrypoints/doubao/frontline-manager.md",
-    "summary": "面向基层管理者，优先调用管理与汇报 methods。",
+    "summary": "面向基层管理者，如有对应 role skill 先叠加岗位视角层，再调用管理与汇报 methods。",
     "relations": [
       "method.communication-reporting.leader-decision-brief",
       "method.management.team-followup-loop",
@@ -67,7 +67,7 @@
     "title": "Doubao Head Office Leadership Prompt",
     "display_name_zh": "豆包总行领导层入口",
     "path": "prompts/entrypoints/doubao/head-office-leadership.md",
-    "summary": "面向总行或分行领导层，强调判断、风险、取舍与拍板项。",
+    "summary": "面向总行或分行领导层，如有对应 role skill 先叠加岗位视角层，再强调判断、风险、取舍与拍板项。",
     "relations": [
       "method.communication-reporting.leader-decision-brief",
       "method.management.team-followup-loop",
@@ -76,42 +76,12 @@
     ]
   },
   {
-    "id": "prompt.entrypoint.auto",
-    "kind": "entrypoint",
-    "title": "Auto Router Prompt",
-    "display_name_zh": "自动路由总入口 Prompt",
-    "path": "prompts/entrypoints/auto.md",
-    "summary": "让模型自动读取仓库、自动路由 skills 和 knowledge packs。",
-    "relations": [
-      "role.corp-relationship-manager",
-      "workflow.report-to-leader",
-      "workflow.market-corporate-client",
-      "workflow.accompany-corporate-client",
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
-    ]
-  },
-  {
-    "id": "prompt.entrypoint.ceb-customer-consulting",
-    "kind": "entrypoint",
-    "title": "CEB Customer Consulting Prompt",
-    "display_name_zh": "光大银行客户咨询入口 Prompt",
-    "path": "prompts/entrypoints/ceb-customer-consulting.md",
-    "summary": "面向银行客户咨询的入口提示词，自动路由知识包并给出保守回答。",
-    "relations": [
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate"
-    ]
-  },
-  {
     "id": "prompt.role.corp-relationship-manager",
     "kind": "role",
     "title": "Corp Relationship Manager Prompt",
     "display_name_zh": "对公客户经理 Prompt",
     "path": "prompts/roles/corp-relationship-manager.md",
-    "summary": "把对公客户经理的方法论转成可复制 prompt。",
+    "summary": "把对公客户经理的岗位视角层转成可复制 prompt。",
     "target_skill": "role.corp-relationship-manager",
     "relations": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",

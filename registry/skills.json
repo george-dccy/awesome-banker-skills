@@ -6,7 +6,7 @@
     "display_name_zh": "对公客户经理",
     "path": "skills/roles/corp-relationship-manager",
     "entry": "skills/roles/corp-relationship-manager/SKILL.md",
-    "summary": "沉淀对公客户经理的客户洞察、推进策略与沟通框架。",
+    "summary": "沉淀对公客户经理的岗位视角、优先级规则、关键对象沟通和协同调用规则。",
     "related_prompts": [
       "prompt.role.corp-relationship-manager"
     ],

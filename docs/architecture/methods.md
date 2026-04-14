@@ -24,7 +24,7 @@
 
 ## 与其他层的边界
 
-- `skills/roles`：谁来做、通常怎么做
+- `skills/roles`：这个岗位通常先看什么、先判断什么、先避开什么
 - `skills/workflows`：场景化编排层，也可以理解为 scene-specific playbook
 - `knowledge-packs`：公开事实是什么
 - `methods`：遇到这类问题时，用什么框架处理
