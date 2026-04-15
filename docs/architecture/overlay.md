@@ -37,6 +37,14 @@ Agent 统一按以下顺序读取：
 3. 经用户确认后，再更新 private 资产
 4. 如用户愿意公开，再整理成 public contribution candidate
 
+如果内容已经不只是提醒，而是可稳定复用的判断方式、场景打法或方法框架，应优先整理成：
+
+- `workspace/private/skills/roles`
+- `workspace/private/skills/workflows`
+- `workspace/private/methods`
+
+不要长期只停留在零散 memory 中。
+
 严禁无审查自动覆写 public 资产。
 
 ## public contribution 流程
