@@ -5,7 +5,7 @@
     "title": "Doubao Auto Prompt",
     "display_name_zh": "豆包自动路由总入口",
     "path": "prompts/entrypoints/doubao/auto.md",
-    "summary": "自动识别提问者身份与场景，优先给出专业结论，再补充所需依据和下一步动作。",
+    "summary": "自动识别身份与场景，支持基于仓库的多轮对话，并自然输出专业结果。",
     "relations": [
       "method.business-operations.problem-opportunity-scan",
       "method.business-operations.client-advance-map",
@@ -23,7 +23,7 @@
     "title": "Doubao Public Consulting Prompt",
     "display_name_zh": "豆包公开咨询入口",
     "path": "prompts/entrypoints/doubao/public-consulting.md",
-    "summary": "面向公开咨询，强调简明结论、适用场景和公开依据。",
+    "summary": "面向公开咨询，支持基于仓库公开知识的多轮对话，并自然输出简明结论和依据。",
     "relations": [
       "pack.banks.ceb.corporate-settlement.basic-settlement",
       "pack.banks.ceb.transaction-banking.yangguang-e-pay",
@@ -36,7 +36,7 @@
     "title": "Doubao Bank Staff Prompt",
     "display_name_zh": "豆包银行员工入口",
     "path": "prompts/entrypoints/doubao/bank-staff.md",
-    "summary": "面向银行员工，强调岗位判断、推进建议和能直接拿去用的结果。",
+    "summary": "面向银行员工，支持基于仓库的多轮对话，并自然输出判断和推进建议。",
     "relations": [
       "role.corp-relationship-manager",
       "workflow.market-corporate-client",
@@ -53,7 +53,7 @@
     "title": "Doubao Frontline Manager Prompt",
     "display_name_zh": "豆包基层管理者入口",
     "path": "prompts/entrypoints/doubao/frontline-manager.md",
-    "summary": "面向基层管理者，强调判断、拆解、盯办和上提事项。",
+    "summary": "面向基层管理者，支持基于仓库的多轮对话，并自然输出判断、拆解和上提事项。",
     "relations": [
       "method.communication-reporting.leader-decision-brief",
       "method.management.team-followup-loop",
@@ -67,7 +67,7 @@
     "title": "Doubao Head Office Leadership Prompt",
     "display_name_zh": "豆包总行领导层入口",
     "path": "prompts/entrypoints/doubao/head-office-leadership.md",
-    "summary": "面向总行或分行领导层，强调判断、风险、取舍和拍板建议。",
+    "summary": "面向总行或分行领导层，支持基于仓库的多轮对话，并自然输出判断、风险和拍板建议。",
     "relations": [
       "method.communication-reporting.leader-decision-brief",
       "method.management.team-followup-loop",
@@ -81,7 +81,7 @@
     "title": "General Agent Prompt",
     "display_name_zh": "通用 Agent 入口",
     "path": "prompts/entrypoints/agent/general.md",
-    "summary": "面向通用 Agent，把仓库当持续工作的银行业务底座，同时沉淀个人专属技能并支持贡献回仓库。",
+    "summary": "面向通用 Agent，支持基于仓库的多轮协作，先解题再沉淀个人专属技能并支持贡献回仓库。",
     "relations": [
       "role.corp-relationship-manager",
       "workflow.market-corporate-client",
