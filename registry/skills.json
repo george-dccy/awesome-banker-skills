@@ -1,113 +1,258 @@
 [
   {
-    "id": "role.corp-relationship-manager",
-    "kind": "role",
-    "title": "Corp Relationship Manager",
-    "display_name_zh": "对公客户经理",
-    "path": "skills/roles/corp-relationship-manager",
-    "entry": "skills/roles/corp-relationship-manager/SKILL.md",
-    "summary": "沉淀对公客户经理的岗位视角、优先级规则、关键对象沟通和协同调用规则。",
-    "related_prompts": [
-      "prompt.role.corp-relationship-manager"
+    "id": "skill.reference.corporate-client-coverage-lens",
+    "type": "reference",
+    "capability": "analyze",
+    "title": "Corporate Client Coverage Lens",
+    "display_name_zh": "对公客户覆盖视角",
+    "path": "skills/reference/corporate-client-coverage-lens",
+    "entry": "skills/reference/corporate-client-coverage-lens/SKILL.md",
+    "summary": "提供对公客户相关任务的专业观察视角、优先级规则和关键对象判断。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["客户推进", "首访准备", "关键对象判断", "岗位视角", "优先级判断"],
+    "when_to_use": "需要先站在成熟对公客户覆盖视角判断重点、对象和推进节奏时。",
+    "not_for": "需要最新外部事实核验、审批授信结论或纯产品参数查询时。",
+    "inputs": ["问题场景", "当前卡点", "关键对象"],
+    "outputs": ["视角判断", "优先级排序", "关键对象提示", "建议补读的 skill 和 knowledge"],
+    "related_skills": [
+      "skill.reference.problem-opportunity-framework",
+      "skill.reference.client-advance-framework",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief"
     ],
-    "related_packs": [
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate",
-      "pack.common.banker-thinking.top-performer",
-      "pack.common.economics.business-basics",
-      "pack.common.sales.consultative-b2b",
-      "pack.common.psychology.business-communication"
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.common.banker-thinking.top-performer",
+      "knowledge.common.economics.business-basics",
+      "knowledge.common.sales.consultative-b2b",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": [
+      "prompt.skill.reference.corporate-client-coverage-lens"
     ]
   },
   {
-    "id": "workflow.report-to-leader",
-    "kind": "workflow",
-    "title": "Report To Leader",
-    "display_name_zh": "向领导汇报",
-    "path": "skills/workflows/report-to-leader",
-    "entry": "skills/workflows/report-to-leader/SKILL.md",
-    "summary": "面向银行汇报场景的编排资产，负责组织事实、方法和拍板项输出。",
-    "orchestration_focus": "银行汇报场景编排",
-    "related_prompts": [
-      "prompt.workflow.report-to-leader"
+    "id": "skill.reference.problem-opportunity-framework",
+    "type": "reference",
+    "capability": "analyze",
+    "title": "Problem Opportunity Framework",
+    "display_name_zh": "问题-机会框架",
+    "path": "skills/reference/problem-opportunity-framework",
+    "entry": "skills/reference/problem-opportunity-framework/SKILL.md",
+    "summary": "帮助识别真实问题、可验证的机会假设和下一步验证动作。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["问题分析", "机会判断", "切入口判断", "客户卡点", "优先级"],
+    "when_to_use": "需要先判断问题是否成立、机会是否值得验证、下一步应该验证什么时。",
+    "not_for": "需要直接输出完整行动方案或最新外部数据结论时。",
+    "inputs": ["当前场景", "已知问题", "初步线索"],
+    "outputs": ["问题扫描", "机会假设", "下一步验证动作"],
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.reference.client-advance-framework",
+      "skill.action.market-corporate-client"
     ],
-    "related_methods": [
-      "method.communication-reporting.leader-decision-brief"
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate"
     ],
-    "related_packs": [
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate",
-      "pack.common.banker-thinking.top-performer",
-      "pack.common.economics.business-basics",
-      "pack.common.psychology.business-communication"
-    ]
+    "related_prompts": []
   },
   {
-    "id": "workflow.market-corporate-client",
-    "kind": "workflow",
+    "id": "skill.reference.client-advance-framework",
+    "type": "reference",
+    "capability": "execute",
+    "title": "Client Advance Framework",
+    "display_name_zh": "客户推进框架",
+    "path": "skills/reference/client-advance-framework",
+    "entry": "skills/reference/client-advance-framework/SKILL.md",
+    "summary": "把沟通结果收束为目标、动作、责任人和时间点，避免推进掉线。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["下一步怎么推进", "客户跟进", "闭环", "谁做什么", "时间点"],
+    "when_to_use": "需要把一次沟通或一次判断推进成可执行的下一步动作时。",
+    "not_for": "需要直接输出事实查询结果或替代场景编排时。",
+    "inputs": ["当前关系阶段", "关键卡点", "协同对象"],
+    "outputs": ["推进目标", "动作清单", "责任人", "时间点"],
+    "related_skills": [
+      "skill.reference.problem-opportunity-framework",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client"
+    ],
+    "related_knowledge": [
+      "knowledge.common.sales.consultative-b2b",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": []
+  },
+  {
+    "id": "skill.reference.decision-brief-framework",
+    "type": "reference",
+    "capability": "communicate",
+    "title": "Decision Brief Framework",
+    "display_name_zh": "拍板简报框架",
+    "path": "skills/reference/decision-brief-framework",
+    "entry": "skills/reference/decision-brief-framework/SKILL.md",
+    "summary": "把复杂事项整理为领导可快速拍板的表达结构。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["向领导汇报", "拍板简报", "口头汇报", "书面简报"],
+    "when_to_use": "需要把复杂事项压缩成可判断、可拍板、可转述的表达结构时。",
+    "not_for": "缺少基础事实且尚未完成事实收集时。",
+    "inputs": ["背景事实", "关键变化", "卡点", "建议动作"],
+    "outputs": ["一句话结论", "关键事实", "卡点", "建议动作", "拍板项"],
+    "related_skills": [
+      "skill.action.report-decision-brief"
+    ],
+    "related_knowledge": [
+      "knowledge.common.banker-thinking.top-performer",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": []
+  },
+  {
+    "id": "skill.reference.team-followup-framework",
+    "type": "reference",
+    "capability": "execute",
+    "title": "Team Followup Framework",
+    "display_name_zh": "团队跟进框架",
+    "path": "skills/reference/team-followup-framework",
+    "entry": "skills/reference/team-followup-framework/SKILL.md",
+    "summary": "帮助拆任务、定责任、看信号和做复盘，形成稳定管理闭环。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["团队跟进", "检查点", "复盘", "责任人", "闭环"],
+    "when_to_use": "需要把多人协同事项管成一块可跟、可查、可复盘的板子时。",
+    "not_for": "只需要单次表达或只回答概念问题时。",
+    "inputs": ["事项清单", "负责人", "截止时间", "当前卡点"],
+    "outputs": ["最小管理板", "检查节奏", "复盘提醒"],
+    "related_skills": [
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief"
+    ],
+    "related_knowledge": [
+      "knowledge.common.banker-thinking.top-performer",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": []
+  },
+  {
+    "id": "skill.action.market-corporate-client",
+    "type": "action",
+    "capability": "execute",
     "title": "Market Corporate Client",
-    "display_name_zh": "对公客户营销",
-    "path": "skills/workflows/market-corporate-client",
-    "entry": "skills/workflows/market-corporate-client/SKILL.md",
-    "summary": "面向首访营销场景的编排资产，负责组织诊断、切入口设计和下一步推进。",
-    "orchestration_focus": "首访营销场景编排",
+    "display_name_zh": "对公客户首访推进",
+    "path": "skills/action/market-corporate-client",
+    "entry": "skills/action/market-corporate-client/SKILL.md",
+    "summary": "面向首访或首次触达场景，组织诊断、开场、切入口和下一步动作。",
+    "audience": ["bank-practitioner"],
+    "task_patterns": ["首访客户", "客户开场", "营销切入口", "首次会谈"],
+    "when_to_use": "准备首次接触客户并需要一套可直接拿去用的推进结构时。",
+    "not_for": "持续陪伴、团队管理闭环或纯知识问答时。",
+    "inputs": ["行业", "当前卡点", "会谈对象", "期望达成的最小结果"],
+    "outputs": ["场景初判", "推荐切入口", "首次会谈目标", "会后推进动作", "客户追问回答"],
+    "related_skills": [
+      "skill.reference.problem-opportunity-framework",
+      "skill.reference.client-advance-framework",
+      "skill.reference.corporate-client-coverage-lens"
+    ],
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.common.sales.consultative-b2b",
+      "knowledge.common.psychology.business-communication"
+    ],
     "related_prompts": [
-      "prompt.workflow.market-corporate-client"
-    ],
-    "related_methods": [
-      "method.business-operations.problem-opportunity-scan",
-      "method.business-operations.client-advance-map"
-    ],
-    "related_packs": [
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate",
-      "pack.common.banker-thinking.top-performer",
-      "pack.common.economics.business-basics",
-      "pack.common.sales.consultative-b2b",
-      "pack.common.psychology.business-communication"
+      "prompt.skill.action.market-corporate-client"
     ]
   },
   {
-    "id": "workflow.accompany-corporate-client",
-    "kind": "workflow",
+    "id": "skill.action.accompany-corporate-client",
+    "type": "action",
+    "capability": "execute",
     "title": "Accompany Corporate Client",
-    "display_name_zh": "对公客户陪伴",
-    "path": "skills/workflows/accompany-corporate-client",
-    "entry": "skills/workflows/accompany-corporate-client/SKILL.md",
-    "summary": "面向客户陪伴场景的编排资产，负责关系推进、问题闭环和下次触达计划。",
-    "orchestration_focus": "客户陪伴场景编排",
+    "display_name_zh": "对公客户持续推进",
+    "path": "skills/action/accompany-corporate-client",
+    "entry": "skills/action/accompany-corporate-client/SKILL.md",
+    "summary": "面向会后跟进、问题闭环和关系经营，输出本次跟进动作与下一次触达计划。",
+    "audience": ["bank-practitioner"],
+    "task_patterns": ["客户跟进", "问题闭环", "会后推进", "关系经营"],
+    "when_to_use": "进入持续跟进阶段并需要把问题、协同和触达节奏组织起来时。",
+    "not_for": "首次触达准备、拍板汇报或纯概念解释时。",
+    "inputs": ["当前关系阶段", "待回应问题", "内部协同角色", "下一次触达目标"],
+    "outputs": ["客户关系温度", "待回应问题清单", "本次跟进动作", "内部协同清单", "下一次触达计划"],
+    "related_skills": [
+      "skill.reference.client-advance-framework",
+      "skill.reference.team-followup-framework",
+      "skill.reference.corporate-client-coverage-lens"
+    ],
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.common.sales.consultative-b2b",
+      "knowledge.common.psychology.business-communication"
+    ],
     "related_prompts": [
-      "prompt.workflow.accompany-corporate-client"
-    ],
-    "related_methods": [
-      "method.business-operations.client-advance-map",
-      "method.management.team-followup-loop"
-    ],
-    "related_packs": [
-      "pack.banks.ceb.corporate-settlement.basic-settlement",
-      "pack.banks.ceb.transaction-banking.yangguang-e-pay",
-      "pack.banks.ceb.trade-finance.yangguang-electricity-certificate",
-      "pack.common.banker-thinking.top-performer",
-      "pack.common.sales.consultative-b2b",
-      "pack.common.psychology.business-communication"
+      "prompt.skill.action.accompany-corporate-client"
     ]
   },
   {
-    "id": "workflow.distill-and-contribute",
-    "kind": "workflow",
-    "title": "Distill And Contribute",
-    "display_name_zh": "蒸馏与贡献协作",
-    "path": "skills/workflows/distill-and-contribute",
-    "entry": "skills/workflows/distill-and-contribute/SKILL.md",
-    "summary": "帮助维护者和贡献者做 private-first 蒸馏、增量更新和公共贡献整理。",
-    "related_prompts": [],
-    "related_packs": [
-      "pack.common.banker-thinking.top-performer",
-      "pack.common.sales.consultative-b2b",
-      "pack.common.psychology.business-communication"
+    "id": "skill.action.report-decision-brief",
+    "type": "action",
+    "capability": "communicate",
+    "title": "Report Decision Brief",
+    "display_name_zh": "向领导汇报与拍板",
+    "path": "skills/action/report-decision-brief",
+    "entry": "skills/action/report-decision-brief/SKILL.md",
+    "summary": "面向汇报与提请拍板场景，组织事实、变化、卡点和建议动作。",
+    "audience": ["finance-learner", "bank-practitioner", "manager"],
+    "task_patterns": ["向领导汇报", "拍板", "书面简报", "口头汇报"],
+    "when_to_use": "需要快速把复杂事项整理成可拍板的口头或书面汇报时。",
+    "not_for": "还没完成基础事实采集、或需要持续跟进闭环时。",
+    "inputs": ["汇报类型", "当前进展", "当前卡点", "期望领导支持事项"],
+    "outputs": ["一句话结论", "关键事实", "当前卡点", "建议动作", "需要拍板项"],
+    "related_skills": [
+      "skill.reference.decision-brief-framework",
+      "skill.reference.team-followup-framework"
+    ],
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.common.banker-thinking.top-performer",
+      "knowledge.common.economics.business-basics",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": [
+      "prompt.skill.action.report-decision-brief"
     ]
+  },
+  {
+    "id": "skill.action.distill-and-curate",
+    "type": "action",
+    "capability": "distill",
+    "title": "Distill And Curate",
+    "display_name_zh": "蒸馏与整理",
+    "path": "skills/action/distill-and-curate",
+    "entry": "skills/action/distill-and-curate/SKILL.md",
+    "summary": "把公开材料、案例和个人经验增量整理成 reference skill、action skill、knowledge 或 private 草稿。",
+    "audience": ["maintainer", "contributor", "finance-learner", "bank-practitioner"],
+    "task_patterns": ["蒸馏资料", "整理知识", "沉淀经验", "public candidate", "private-first"],
+    "when_to_use": "需要把材料和经验整理成可复用仓库资产，并明确公开边界时。",
+    "not_for": "只求当轮答案、不需要沉淀或没有任何材料输入时。",
+    "inputs": ["输入材料", "目标用途", "public/private 意图", "已有资产现状"],
+    "outputs": ["资产归类判断", "目标路径", "建议文件", "增量摘要", "公开边界提示"],
+    "related_skills": [
+      "skill.reference.problem-opportunity-framework",
+      "skill.reference.client-advance-framework"
+    ],
+    "related_knowledge": [
+      "knowledge.common.banker-thinking.top-performer",
+      "knowledge.common.sales.consultative-b2b",
+      "knowledge.common.psychology.business-communication"
+    ],
+    "related_prompts": []
   }
 ]

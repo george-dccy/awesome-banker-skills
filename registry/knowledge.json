@@ -1,0 +1,125 @@
+[
+  {
+    "id": "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+    "institution": "ceb",
+    "category": "corporate-settlement",
+    "title": "CEB Corporate Settlement Basic",
+    "display_name_zh": "光大银行-对公基础结算",
+    "path": "knowledge/banks/ceb/corporate-settlement/basic-settlement",
+    "summary": "对公账户与基础结算场景的公开知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要解释对公账户、结算、收付、对账、权限等公开信息时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief"
+    ]
+  },
+  {
+    "id": "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+    "institution": "ceb",
+    "category": "transaction-banking",
+    "title": "CEB Yangguang E-Pay",
+    "display_name_zh": "光大银行-阳光 e 付通",
+    "path": "knowledge/banks/ceb/transaction-banking/yangguang-e-pay",
+    "summary": "阳光 e 付通相关公开知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要解释交易协同、订单、账单、开票等场景下的公开产品信息时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief"
+    ]
+  },
+  {
+    "id": "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+    "institution": "ceb",
+    "category": "trade-finance",
+    "title": "CEB Yangguang Electricity Certificate",
+    "display_name_zh": "光大银行-阳光电费证",
+    "path": "knowledge/banks/ceb/trade-finance/yangguang-electricity-certificate",
+    "summary": "阳光电费证及相关场景的公开知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要解释电费、国内证、福费廷等公开产品与场景信息时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief"
+    ]
+  },
+  {
+    "id": "knowledge.common.banker-thinking.top-performer",
+    "institution": "common",
+    "category": "banker-thinking",
+    "title": "Top Banker Thinking",
+    "display_name_zh": "高水平银行人思维模型",
+    "path": "knowledge/common/banker-thinking/top-performer",
+    "summary": "高水平银行人常见的判断、节奏和执行方式。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要补充执行节奏、优先级感和专业判断氛围时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.reference.decision-brief-framework",
+      "skill.reference.team-followup-framework",
+      "skill.action.report-decision-brief",
+      "skill.action.distill-and-curate"
+    ]
+  },
+  {
+    "id": "knowledge.common.economics.business-basics",
+    "institution": "common",
+    "category": "economics",
+    "title": "Business Economics Basics",
+    "display_name_zh": "经济学与商业常识",
+    "path": "knowledge/common/economics/business-basics",
+    "summary": "利率、通胀、周期与现金流等金融能力基础知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要补充宏观、经营环境和现金流逻辑时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.action.report-decision-brief"
+    ]
+  },
+  {
+    "id": "knowledge.common.sales.consultative-b2b",
+    "institution": "common",
+    "category": "sales",
+    "title": "Consultative B2B Sales",
+    "display_name_zh": "顾问式 B2B 销售",
+    "path": "knowledge/common/sales/consultative-b2b",
+    "summary": "需求洞察、异议处理与推进节奏的公开方法知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要补充开场、提问、异议处理和推进节奏时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.reference.client-advance-framework",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.distill-and-curate"
+    ]
+  },
+  {
+    "id": "knowledge.common.psychology.business-communication",
+    "institution": "common",
+    "category": "psychology",
+    "title": "Business Communication Psychology",
+    "display_name_zh": "商业沟通心理学",
+    "path": "knowledge/common/psychology/business-communication",
+    "summary": "信任建立、认知偏差和沟通摩擦相关公开知识。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "when_to_use": "需要补充信任建立、沟通阻力和认知偏差视角时。",
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.reference.client-advance-framework",
+      "skill.reference.decision-brief-framework",
+      "skill.reference.team-followup-framework",
+      "skill.action.market-corporate-client",
+      "skill.action.accompany-corporate-client",
+      "skill.action.report-decision-brief",
+      "skill.action.distill-and-curate"
+    ]
+  }
+]

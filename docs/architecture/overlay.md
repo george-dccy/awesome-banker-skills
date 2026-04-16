@@ -9,15 +9,13 @@
 Agent 统一按以下顺序读取：
 
 1. `registry/skills.json`
-2. `registry/knowledge-packs.json`
-3. `registry/methods.json`
-4. `registry/prompts.json`
-5. 如果存在，再读取：
+2. `registry/knowledge.json`
+3. `registry/prompts.json`
+4. 如果存在，再读取：
    - `workspace/private/registry/skills.json`
-   - `workspace/private/registry/knowledge-packs.json`
-   - `workspace/private/registry/methods.json`
+   - `workspace/private/registry/knowledge.json`
    - `workspace/private/registry/prompts.json`
-6. 合并索引后，再按路由读取具体正文
+5. 合并索引后，再按路由读取具体正文
 
 ## 合并规则
 
@@ -37,11 +35,11 @@ Agent 统一按以下顺序读取：
 3. 经用户确认后，再更新 private 资产
 4. 如用户愿意公开，再整理成 public contribution candidate
 
-如果内容已经不只是提醒，而是可稳定复用的判断方式、场景打法或方法框架，应优先整理成：
+如果内容已经不只是提醒，而是可稳定复用的专业视角、行动套路或知识专题，应优先整理成：
 
-- `workspace/private/skills/roles`
-- `workspace/private/skills/workflows`
-- `workspace/private/methods`
+- `workspace/private/skills/reference`
+- `workspace/private/skills/action`
+- `workspace/private/knowledge`
 
 不要长期只停留在零散 memory 中。
 
@@ -64,9 +62,9 @@ Agent 统一按以下顺序读取：
 
 ## 对未来行内落地的意义
 
-这个 overlay 结构为后续银行内网落地预留了清晰扩展点：
+这个 overlay 结构为后续更强的私有化落地预留了清晰扩展点：
 
-- public registry 可替换为行内 registry
-- private overlay 可映射为个人或部门工作区
-- repo-first prompt 逻辑可以延续到行内 Agent
-- 当前版本先只保留结构，不实现具体内网接口
+- public registry 可替换为机构内部 registry
+- private growth layer 可映射为个人或部门工作区
+- repo-first prompt 逻辑可以延续到更封闭的 Agent 环境
+- 当前版本先保留结构，不实现具体内网接口

@@ -2,8 +2,13 @@
 
 ## 主入口
 
-当前仓库优先推荐豆包专项入口：
+这些入口共同服务于同一个仓库定位：
 
+`面向银行/金融场景的专业知识与方法集合，致力于为金融人的职场助力，甚至可以不断成长为金融人面对客户时的分身`
+
+当前仓库优先推荐这些入口：
+
+- `prompts/entrypoints/doubao/financial-capability.md`
 - `prompts/entrypoints/doubao/public-consulting.md`
 - `prompts/entrypoints/doubao/bank-staff.md`
 - `prompts/entrypoints/doubao/frontline-manager.md`
@@ -11,14 +16,14 @@
 - `prompts/entrypoints/doubao/auto.md`
 - `prompts/entrypoints/agent/general.md`
 
-这些入口已经统一使用以下仓库地址：
+这些入口统一使用当前仓库地址：
 
-`https://gitee.com/georgedccy/awesome-banker-skills.git`
+`https://gitee.com/georgedccy/financial-capability-kit.git`
 
 共同约定：
 
-1. 先读取 `registry/*.json` 或 `registry/knowledge-packs.json`
-2. 先按问题类型去读对应正文，再形成回答
+1. 先读取 `registry/skills.json`、`registry/knowledge.json`、`registry/prompts.json`
+2. 先判断更需要 `skills/reference`、`skills/action` 还是 `knowledge`
 3. 这套仓库约束适用于整个对话，不只第一轮
 4. 默认优先使用仓库，不要拿外部搜索替代仓库
 5. 对用户呈现时，优先直接给结论、判断或可执行结果
@@ -27,19 +32,17 @@
 
 推荐读取顺序：
 
-`scene -> workflow -> method -> knowledge pack`
-
-如果身份明确，也可以同时读取对应 `role skill`。
+`question -> reference/action/knowledge -> answer -> private distill if valuable`
 
 其中：
 
-- 豆包/千问等聊天模型入口，重点是“多轮持续用仓库，外部自然表达”
+- 豆包等聊天模型入口，重点是“多轮持续用仓库，外部自然表达”
 - Agent 入口，重点是“整场会话持续以仓库为底座，先解题，再沉淀资产”
 
 ## 专项 Prompt
 
 当你明确只做某一类任务时，再使用更短的专项 prompt：
 
-- `prompts/roles/*`
-- `prompts/workflows/*`
-- `prompts/knowledge-packs/*`
+- `prompts/skills/reference/*`
+- `prompts/skills/action/*`
+- `prompts/knowledge/*`
