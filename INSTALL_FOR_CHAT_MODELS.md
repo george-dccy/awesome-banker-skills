@@ -1,29 +1,33 @@
-# Install Fincap For Chat Models
+# 面向聊天模型的 Fincap 接入说明
 
-This file is for chat applications that may or may not be able to read repositories.
+本文件用于那些可能能读取仓库、也可能不能读取仓库的聊天类应用。
 
-## One-Line Prompt
+纯聊天应用通常不能安装常驻 skill。
+如果平台支持自定义 Agent、长期记忆、知识库或工具 skill，优先使用 `INSTALL_FOR_AGENTS.md`，并安装 `agent-skills/financial-capability-kit/SKILL.md`。
+只有这种模式，才更可能在新 session 中根据上下文自动触发 Fincap。
 
-Send this first:
+## 一句话提示词
+
+先发送：
 
 ```text
 请读取 Financial Capability Kit：https://gitee.com/georgedccy/financial-capability-kit.git，并先遵循仓库中的 INSTALL_FOR_CHAT_MODELS.md。如果你不能读取仓库正文，请直接说“当前无法访问仓库”，不要按通用金融常识补全。
 ```
 
-If the app supports GitHub better:
+如果该应用更容易访问 GitHub：
 
 ```text
 请读取 Financial Capability Kit：https://github.com/george-dccy/financial-capability-kit.git，并先遵循仓库中的 INSTALL_FOR_CHAT_MODELS.md。如果你不能读取仓库正文，请直接说“当前无法访问仓库”，不要按通用金融常识补全。
 ```
 
-## Recommended Modes
+## 推荐模式
 
 - MiniMax 全能模式：优先推荐，可克隆或读取仓库时效果最好
 - 豆包电脑版超能模式：可用；普通聊天模式不保证读取正文
 - DeepSeek：建议开启深度思考并关闭智能搜索，避免绕开仓库
 - 普通聊天模式：不要默认相信它已经读取仓库
 
-## Access Check
+## 访问自检
 
 正式回答前，模型必须先确认自己能读取：
 
@@ -38,7 +42,7 @@ If the app supports GitHub better:
 当前无法访问仓库
 ```
 
-## Routing Rule
+## 路由规则
 
 收到问题后先判断：
 
@@ -56,7 +60,7 @@ If the app supports GitHub better:
 - 政策、新闻、产品、竞品、客户变化等新信息 -> `skills/action/interpret-financial-signal/*`
 - 产品、办理、公开事实、FAQ -> `knowledge/*`
 
-## Answer Rule
+## 回答规则
 
 最终回答要像专业金融同事，而不是像在展示技术路由：
 
@@ -66,6 +70,6 @@ If the app supports GitHub better:
 - 必要时区分“仓库公开依据”和“专业推论”
 - 信息不足时只问 1-2 个最关键问题
 
-## Boundary
+## 边界
 
 不编造内部制度，不输出审批、授信、定价、时效承诺，不索取真实敏感信息。

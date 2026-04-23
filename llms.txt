@@ -1,30 +1,31 @@
 # Financial Capability Kit
 
-> 面向银行/金融场景的专业知识与方法集合，致力于为金融人的职场助力，甚至可以不断成长为金融人面对客户时的分身。
+> 面向银行/金融场景的专业知识与方法集合，致力于为金融人的职场助力，可以不断成长为金融人面对客户时的分身。
 
-## Start Here
+## 优先读取
 
 - `README.md`
 - `INSTALL_FOR_AGENTS.md`
 - `INSTALL_FOR_CHAT_MODELS.md`
+- `agent-skills/financial-capability-kit/SKILL.md`
 - `prompts/entrypoints/agent/general.md`
 - `prompts/entrypoints/chat/auto.md`
 
-## Resolver Files
+## 路由文件
 
 - `registry/skills.json`
 - `registry/knowledge.json`
 - `registry/prompts.json`
 
-## Core Skill Areas
+## 核心能力区域
 
-- `skills/reference/`: professional perspectives, judgment frameworks, expression structures
-- `skills/action/`: task execution skills, including client coverage, follow-up, decision brief, information interpretation, and distillation
-- `knowledge/`: public financial knowledge, public bank product notes, FAQ, and sources
+- `skills/reference/`：专业视角、判断框架、表达结构
+- `skills/action/`：任务执行 skill，包括客户经营、持续跟进、拍板简报、信息解读和蒸馏整理
+- `knowledge/`：公开金融知识、公开银行产品资料、FAQ 和来源
 
-## Important Rules
+## 重要规则
 
-- Repository content should be used before generic web search.
-- If repository content is insufficient, write `当前仓库未覆盖`.
-- Do not invent internal bank rules, credit approval, pricing, processing time promises, or real customer data.
-- Private user experience belongs in `workspace/private/` when a local private workspace exists.
+- 仓库内容优先于泛化网络搜索。
+- 如果仓库内容不足，写 `当前仓库未覆盖`。
+- 不编造银行内部制度、授信审批、定价、办理时效承诺或真实客户数据。
+- 如果存在本地 private workspace，用户个人经验应进入 `workspace/private/`。

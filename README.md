@@ -46,6 +46,13 @@
 请读取并遵循 Financial Capability Kit 安装说明：https://gitee.com/georgedccy/financial-capability-kit/raw/main/INSTALL_FOR_AGENTS.md
 ```
 
+如果是在本地 Agent 中，希望新会话也能自动触发，可安装 resolver skill：
+
+```powershell
+git clone https://gitee.com/georgedccy/financial-capability-kit.git fincap
+python .\fincap\install\fincap_agent_skill.py --target all
+```
+
 给支持读取仓库的聊天模型：
 
 ```text

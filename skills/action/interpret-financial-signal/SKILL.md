@@ -1,6 +1,6 @@
 ---
 name: interpret-financial-signal
-description: Use when a user brings a new policy, news item, product, competitor move, client change, market signal, or any financial/business information that needs interpretation and practical follow-up.
+description: 当用户提供新政策、新闻、产品、竞品动作、客户变化、市场信号，或任何需要解读并转成落地建议的金融/商业信息时使用。
 license: MIT
 compatibility:
   agents: [openclaw, claude-code, codex]
@@ -33,14 +33,14 @@ metadata:
 
 # 金融信息解读与落地 Skill
 
-## Scope
+## 范围
 
 这是一个 action skill。
 它负责把用户新发现的信息，转成银行/金融工作中可理解、可判断、可追问、可落地的行动参考。
 
 它不替代新闻事实核验，不输出内部审批结论，也不把一次性信息直接写成长期知识。
 
-## When To Use
+## 使用场景
 
 - 用户贴出政策、监管动态、新闻报道或行业变化，希望判断含义
 - 用户发现新产品、行外竞品、机构动作，希望知道对自身工作有什么启发
@@ -48,7 +48,7 @@ metadata:
 - 用户给出任意他认为值得解读的材料，希望得到专业视角和落地建议
 - 用户继续追问“这对我有什么用”“怎么跟客户讲”“怎么写汇报”“要沉淀到哪里”
 
-## Required Reads
+## 必读内容
 
 1. `references/signal-classification.md`
 2. `references/interpretation-playbook.md`
@@ -56,7 +56,7 @@ metadata:
 4. `references/knowledge-routing.md`
 5. 按命中场景读取相关 reference skill、action skill、knowledge
 
-## Input Contract
+## 输入契约
 
 最低输入：
 
@@ -64,7 +64,7 @@ metadata:
 - 用户身份或使用场景，如果未提供，默认按“想提升金融能力的个人”处理
 - 用户期望产出，如果未提供，默认输出“解读 + 落地参考 + 后续追问方向”
 
-## Execution Rule
+## 执行规则
 
 1. 先判断信息类型：政策、新闻、产品、竞品、客户、行业、风险、能力素材或其他
 2. 再判断工作相关性：能力成长、公开咨询、业务推进、管理跟进、领导汇报
@@ -73,7 +73,7 @@ metadata:
 5. 如果用户继续追问，沿同一信息上下文深化，不要每轮重来
 6. 如果材料有长期价值，调用 `skill.action.distill-and-curate` 判断是否进入 private-first 沉淀
 
-## Output Contract
+## 输出契约
 
 输出至少包含：
 
@@ -85,7 +85,7 @@ metadata:
 6. 后续最值得追问的 1-3 个方向
 7. 边界提示
 
-## Quality Gate
+## 质量门槛
 
 - 是否先判断信息类型，而不是直接写观点
 - 是否区分公开事实、专业推论和行动建议
@@ -94,7 +94,7 @@ metadata:
 - 是否在证据不足时明确写“待核验”或“当前仓库未覆盖”
 - 是否判断该信息是否值得沉淀为 private 资产或 public candidate
 
-## Script Hooks
+## 脚本钩子
 
 - `scripts/build-context.py`：根据信息文本判断类型、推荐读取顺序和相关资产
 - `scripts/validate-output.py`：校验解读结果是否包含必要结构和边界提示

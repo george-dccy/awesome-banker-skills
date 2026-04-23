@@ -1,4 +1,4 @@
-# Signal Classification
+# 信息分类
 
 ## 1. 信息类型
 
