@@ -355,5 +355,35 @@
     "related_prompts": [
       "prompt.skill.action.product-matching-boundary"
     ]
+  },
+  {
+    "id": "skill.reference.enterprise-cash-flow-judgment",
+    "type": "reference",
+    "capability": "analyze",
+    "title": "Enterprise Cash Flow Judgment",
+    "display_name_zh": "企业现金流判断",
+    "path": "skills/reference/enterprise-cash-flow-judgment",
+    "entry": "skills/reference/enterprise-cash-flow-judgment/SKILL.md",
+    "summary": "从银行信审视角判断企业现金流质量、三流平衡与信贷相关信号。",
+    "audience": ["finance-learner", "bank-practitioner"],
+    "task_patterns": ["现金流是否健康", "企业现金生成能力", "偿债能力评估", "经营现金流", "企业现金质量", "财报现金流分析", "还款能力"],
+    "when_to_use": "需要从财报中判断企业真实现金生成能力、判断客户现金流是否健康可持续、评估融资需求与现金状态匹配度时。",
+    "not_for": "需要精确财务预测模型、行业对比基准数据、最新监管政策即时解读时。",
+    "inputs": ["近三年资产负债表（简化版）", "近三年现金流量表（经营/投资/融资三段）", "近三年利润表"],
+    "outputs": ["现金流质量判断", "三流平衡状态", "预警信号标注", "还缺信息提示"],
+    "related_skills": [
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.reference.problem-opportunity-framework",
+      "skill.action.market-corporate-client",
+      "skill.action.product-matching-boundary",
+      "skill.action.report-decision-brief"
+    ],
+    "related_knowledge": [
+      "knowledge.common.economics.business-basics",
+      "knowledge.banks.ceb.corporate-settlement.yangguang-cash-management",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay"
+    ],
+    "related_prompts": []
   }
 ]
