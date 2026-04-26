@@ -6,5 +6,6 @@
 
 - `banker-thinking/top-performer`
 - `economics/business-basics`
+- `finance/financial-statements-basics`
 - `sales/consultative-b2b`
 - `psychology/business-communication`
