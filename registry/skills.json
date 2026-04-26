@@ -322,5 +322,38 @@
     "related_prompts": [
       "prompt.skill.action.client-followup-systematic"
     ]
+  },
+  {
+    "id": "skill.action.product-matching-boundary",
+    "type": "action",
+    "capability": "execute",
+    "title": "Product Matching Boundary",
+    "display_name_zh": "产品匹配与边界提示",
+    "path": "skills/action/product-matching-boundary",
+    "entry": "skills/action/product-matching-boundary/SKILL.md",
+    "summary": "面向需求定型后场景，判断哪类产品适合、哪些边界不能碰、是否需要跨条线协同。",
+    "audience": ["bank-practitioner"],
+    "task_patterns": ["产品匹配", "边界提示", "合规判断", "协同需求", "产品适配"],
+    "when_to_use": "需求诊断完成后需要判断产品适配、核查合规边界、设计协同方案时。",
+    "not_for": "首访开场、需求探索、或只需要产品参数查询时（用 market-corporate-client 或 knowledge 查询）。",
+    "inputs": ["客户需求定型结论", "客户基本情况（行业/规模/经营状态）", "客户归属（公司/零售/普惠/同业）"],
+    "outputs": ["产品候选列表（按适配度排序）", "边界提示", "协同需求", "下一轮动作建议"],
+    "related_skills": [
+      "skill.reference.problem-opportunity-framework",
+      "skill.reference.corporate-client-coverage-lens",
+      "skill.action.market-corporate-client",
+      "skill.action.client-followup-systematic"
+    ],
+    "related_knowledge": [
+      "knowledge.banks.ceb.corporate-settlement.basic-settlement",
+      "knowledge.banks.ceb.transaction-banking.yangguang-e-pay",
+      "knowledge.banks.ceb.trade-finance.yangguang-electricity-certificate",
+      "knowledge.banks.ceb.supply-chain.yangguang-supply-chain",
+      "knowledge.banks.ceb.inclusive-finance.scenario-map",
+      "knowledge.common.sales.consultative-b2b"
+    ],
+    "related_prompts": [
+      "prompt.skill.action.product-matching-boundary"
+    ]
   }
 ]
