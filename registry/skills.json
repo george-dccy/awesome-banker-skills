@@ -467,5 +467,34 @@
       "knowledge.common.economics.business-basics"
     ],
     "related_prompts": []
+  },
+  {
+    "id": "skill.action.inclusive-finance-scenario-judgment",
+    "type": "action",
+    "capability": "analyze",
+    "title": "Inclusive Finance Scenario Judgment",
+    "display_name_zh": "普惠金融场景判断",
+    "path": "skills/action/inclusive-finance-scenario-judgment",
+    "entry": "skills/action/inclusive-finance-scenario-judgment/SKILL.md",
+    "summary": "面向普惠金融场景，快速判断客户是否属于普惠适用范畴，匹配政策层级和产品候选方向。",
+    "audience": ["bank-practitioner"],
+    "task_patterns": ["普惠金融判断", "场景判断", "小微企业判断", "三农判断", "普惠贷款", "客户是否属于普惠"],
+    "when_to_use": "接触新客户判断是否属于普惠金融客群、或需要给 product-matching-boundary 提供普惠场景结论时。",
+    "not_for": "需求已经确认为普惠后的产品细节查询（用 knowledge 查询）、或只需要产品参数时。",
+    "inputs": ["客户主营业务描述", "企业规模信息（员工数/年营收/注册资本至少一项）", "行业分类"],
+    "outputs": ["场景判断结论（属于普惠/可能属于普惠/不属于普惠）", "适用客群分类", "政策依据层级", "产品候选方向", "边界提示"],
+    "related_skills": [
+      "skill.action.client-needs-diagnosis",
+      "skill.action.product-matching-boundary",
+      "skill.reference.problem-opportunity-framework",
+      "skill.reference.corporate-client-coverage-lens"
+    ],
+    "related_knowledge": [
+      "knowledge.banks.ceb.inclusive-finance.scenario-map",
+      "knowledge.banks.ceb.inclusive-finance.scenario-map.modules.policy-background",
+      "knowledge.banks.ceb.inclusive-finance.scenario-map.modules.scenario-overview",
+      "knowledge.banks.ceb.inclusive-finance.scenario-map.modules.key-products"
+    ],
+    "related_prompts": []
   }
 ]
