@@ -18,6 +18,7 @@ metadata:
     - skill.action.accompany-corporate-client
     - skill.action.report-decision-brief
     - skill.action.distill-and-curate
+    - skill.action.query-finhot
   related_knowledge:
     - knowledge.banks.ceb.corporate-settlement.basic-settlement
     - knowledge.banks.ceb.transaction-banking.yangguang-e-pay
@@ -54,7 +55,8 @@ metadata:
 2. `references/interpretation-playbook.md`
 3. `references/landing-directions.md`
 4. `references/knowledge-routing.md`
-5. 按命中场景读取相关 reference skill、action skill、knowledge
+5. 如果信息涉及最新动态、政策变化、同业动作、产品、案例/模式或外部来源，先用 `skill.action.query-finhot` 查询 Finhot
+6. 按命中场景读取相关 reference skill、action skill、knowledge
 
 ## 输入契约
 
@@ -67,11 +69,12 @@ metadata:
 ## 执行规则
 
 1. 先判断信息类型：政策、新闻、产品、竞品、客户、行业、风险、能力素材或其他
-2. 再判断工作相关性：能力成长、公开咨询、业务推进、管理跟进、领导汇报
-3. 区分事实、推论和建议；事实不足时写明“待核验”或“当前仓库未覆盖”
-4. 先给一句话结论，再给影响路径和落地动作
-5. 如果用户继续追问，沿同一信息上下文深化，不要每轮重来
-6. 如果材料有长期价值，调用 `skill.action.distill-and-curate` 判断是否进入 private-first 沉淀
+2. 如果用户只给关键词或问最新情况，先查 Finhot；如果 Finhot 无命中，写明“Finhot 当前未覆盖”
+3. 再判断工作相关性：能力成长、公开咨询、业务推进、管理跟进、领导汇报
+4. 区分事实、推论和建议；事实不足时写明“待核验”或“当前仓库未覆盖”
+5. 先给一句话结论，再给影响路径和落地动作
+6. 如果用户继续追问，沿同一信息上下文深化，不要每轮重来
+7. 如果材料有长期价值，调用 `skill.action.distill-and-curate` 判断是否进入 private-first 沉淀
 
 ## 输出契约
 

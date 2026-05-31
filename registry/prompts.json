@@ -33,6 +33,7 @@
       "skill.action.accompany-corporate-client",
       "skill.action.report-decision-brief",
       "skill.action.interpret-financial-signal",
+      "skill.action.query-finhot",
       "skill.action.distill-and-curate"
     ]
   },
@@ -273,6 +274,20 @@
       "skill.reference.branch-operating-diagnosis-lens",
       "skill.action.report-decision-brief",
       "skill.action.interpret-financial-signal"
+    ]
+  },
+  {
+    "id": "prompt.skill.action.query-finhot",
+    "kind": "skill",
+    "title": "Query Finhot Prompt",
+    "display_name_zh": "查询 Finhot 内容库 Prompt",
+    "path": "prompts/skills/action/query-finhot.md",
+    "summary": "查询 Finhot 最新动态、产品、案例/模式、政策、观察和打法，并结合 Fincap 输出解读。",
+    "target_skill": "skill.action.query-finhot",
+    "relations": [
+      "skill.action.query-finhot",
+      "skill.action.interpret-financial-signal",
+      "skill.action.distill-and-curate"
     ]
   }
 ]

@@ -39,16 +39,23 @@
 共同约定：
 
 1. 先读取 `registry/skills.json`、`registry/knowledge.json`、`registry/prompts.json`
-2. 先判断更需要 `skills/reference`、`skills/action` 还是 `knowledge`
+2. 先判断更需要 `skills/reference`、`skills/action`、`skills/action/query-finhot` 还是 `knowledge`
 3. 这套仓库约束适用于整个对话，不只第一轮
-4. 默认优先使用仓库，不要拿外部搜索替代仓库
+4. 默认优先使用仓库和 Finhot，不要拿外部搜索替代仓库
 5. 对用户呈现时，优先直接给结论、判断或可执行结果
 6. 每个入口末尾都保留问题占位，方便直接复制使用
 7. 覆盖不足时明确写出“当前仓库未覆盖”
 
+Finhot 是 Fincap 的内容库和动态库：
+
+- 生产地址：`https://finhot.boluomi.ren`
+- 最新动态、同业动作、政策变化、产品、案例/模式、观察和打法，优先使用 `skills/action/query-finhot`
+- Fincap 仓库继续负责稳定的判断框架、执行流程、边界规则和 prompt
+- Finhot 的 `dynamic` 是来源线索，人工整理内容才作为站内沉淀知识使用
+
 推荐读取顺序：
 
-`question -> reference/action/knowledge -> answer -> private distill if valuable`
+`question -> Finhot if latest/content needed -> reference/action/knowledge -> answer -> private distill if valuable`
 
 其中：
 

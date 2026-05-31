@@ -252,7 +252,8 @@
       "skill.action.market-corporate-client",
       "skill.action.accompany-corporate-client",
       "skill.action.report-decision-brief",
-      "skill.action.distill-and-curate"
+      "skill.action.distill-and-curate",
+      "skill.action.query-finhot"
     ],
     "related_knowledge": [
       "knowledge.banks.ceb.corporate-settlement.basic-settlement",
@@ -686,6 +687,40 @@
     "related_knowledge": [],
     "related_prompts": [
       "prompt.skill.action.branch-operating-diagnosis"
+    ]
+  },
+  {
+    "id": "skill.action.query-finhot",
+    "type": "action",
+    "capability": "retrieve",
+    "title": "Query Finhot",
+    "display_name_zh": "查询 Finhot 内容库",
+    "path": "skills/action/query-finhot",
+    "entry": "skills/action/query-finhot/SKILL.md",
+    "summary": "从 Finhot 读取最新动态、产品、案例/模式、政策、观察和打法，并结合 Fincap skill 输出解读。",
+    "audience": ["finance-learner", "bank-practitioner", "manager"],
+    "task_patterns": [
+      "最新动态",
+      "Finhot 查询",
+      "同业动作",
+      "政策变化",
+      "产品案例",
+      "交易银行动态",
+      "供应链金融动态"
+    ],
+    "when_to_use": "问题涉及最新公开信息、Finhot 已沉淀内容、或需要把 Fincap 判断框架与 Finhot 内容库联动时。",
+    "not_for": "只需要稳定方法论、内部审批结论、或不能访问 Finhot API 时。",
+    "inputs": ["关键词或问题", "期望分类（可选）", "使用场景"],
+    "outputs": ["命中内容", "来源链接", "解读结论", "落地建议", "待核验项"],
+    "related_skills": [
+      "skill.action.interpret-financial-signal",
+      "skill.action.distill-and-curate",
+      "skill.action.market-corporate-client",
+      "skill.action.product-matching-boundary"
+    ],
+    "related_knowledge": [],
+    "related_prompts": [
+      "prompt.skill.action.query-finhot"
     ]
   }
 ]
