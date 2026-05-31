@@ -58,6 +58,12 @@ curl "$FINHOT_PUBLIC_BASE_URL/api/public/items?mode=selected&take=10"
 curl "$FINHOT_PUBLIC_BASE_URL/api/public/items?q=现金管理&take=10"
 ```
 
+最近 2 天某关键词：
+
+```bash
+curl "$FINHOT_PUBLIC_BASE_URL/api/public/items?q=现金管理&days=2&take=10"
+```
+
 按内容分类：
 
 ```bash
@@ -79,6 +85,15 @@ curl "$FINHOT_PUBLIC_BASE_URL/api/public/items?source_category=media&take=10"
 ```bash
 curl "$FINHOT_PUBLIC_BASE_URL/api/public/sources"
 ```
+
+Agent 读取上下文：
+
+```bash
+curl "$FINHOT_PUBLIC_BASE_URL/api/public/context?q=供应链金融&days=2&take=10"
+curl "$FINHOT_PUBLIC_BASE_URL/api/public/items/{slug}"
+```
+
+`/api/public/context` 会返回每条内容的使用规则：动态线索保留来源链接，人工整理内容可继续读取详情 API。
 
 ## 使用规则
 
